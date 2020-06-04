@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: brianwsai/auth
+          image: us.gcr.io/stubclub-dev/auth
 ---
 apiVersion: v1
 kind: Service
