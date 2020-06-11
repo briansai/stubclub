@@ -5,10 +5,12 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-  local:
-    push: false
+  # local:
+  #   push: false
+  googleCloudBuild:
+    projectId: stubclub
   artifacts:
-    - image: brianwsai/auth
+    - image: us.gcr.io/stubclub/auth
       context: auth
       docker:
         dockerfile: Dockerfile
