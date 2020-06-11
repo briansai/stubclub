@@ -8,7 +8,7 @@ build:
   local:
     push: false
   artifacts:
-    - image: brianwsai/auth
+    - image: us.gcr.io/stubclub/auth
       context: auth
       docker:
         dockerfile: Dockerfile
