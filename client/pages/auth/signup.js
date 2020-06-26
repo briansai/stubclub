@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import Router from 'next/router';
 import useRequest from '../../hooks/useRequest';
 
 const inputText = {
@@ -15,7 +15,8 @@ export default () => {
     body: {
       email,
       password
-    }
+    },
+    onSuccess: () => Router.push('/')
   });
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -24,8 +25,7 @@ export default () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-
-    doRequest();
+    await doRequest();
   };
 
   return (
