@@ -1,10 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import buildClient from '../api/buildClient';
+import Navigation from '../components/navigation';
 
-const AppComponent = ({ Component, pageProps }) => {
+const AppComponent = ({ Component, pageProps, currentUser }) => {
   return (
     <div>
-      <h1>Header!</h1>
+      <Navigation currentUser={currentUser} />
       <Component {...pageProps} />
     </div>
   );
