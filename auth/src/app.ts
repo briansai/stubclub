@@ -7,7 +7,7 @@ import { currentUserRouter } from './routes/currentUser';
 import { signInRouter } from './routes/signIn';
 import { signOutRouter } from './routes/signOut';
 import { signUpRouter } from './routes/signUp';
-import { errorHandler } from './middlewares/errorHandler';
+import { errorHandler } from '@stubclub/common';
 
 const app = express();
 
