@@ -2,7 +2,8 @@ import express from 'express';
 import 'express-async-errors';
 import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
-import { errorHandler } from '@stubclub/common';
+import { errorHandler, currentUser } from '@stubclub/common';
+import { createTicketRouter } from './routes/new';
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use(
   })
 );
 
+app.use(currentUser);
+app.use(createTicketRouter);
 app.use(errorHandler);
 
 export { app };

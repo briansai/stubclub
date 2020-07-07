@@ -16,7 +16,7 @@ spec:
         - name: auth
           image: us.gcr.io/stubclub/auth
           env:
-            - name: MONGO_URI
+            - name: MONGO_URI_AUTH
               value: 'mongodb://auth-mongo-srv:27017/auth'
             - name: JWT_KEY
               valueFrom:

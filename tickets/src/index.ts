@@ -6,12 +6,12 @@ const dbConnect = async () => {
     throw new Error('JWT_KEY must be defined');
   }
 
-  if (!process.env.MONGO_URI) {
+  if (!process.env.MONGO_URI_TICKETS) {
     throw new Error('MONGO_URI must be defined');
   }
 
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect(process.env.MONGO_URI_TICKETS, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true
