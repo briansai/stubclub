@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
 import { errorHandler, currentUser } from '@stubclub/common';
 import { createTicketRouter } from './routes/new';
+import { displayTicketRouter } from './routes/display';
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(
 
 app.use(currentUser);
 app.use(createTicketRouter);
+app.use(displayTicketRouter);
 app.use(errorHandler);
 
 export { app };
