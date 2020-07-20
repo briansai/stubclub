@@ -5,6 +5,8 @@ import cookieSession from 'cookie-session';
 import { errorHandler, currentUser } from '@stubclub/common';
 import { createTicketRouter } from './routes/new';
 import { displayTicketRouter } from './routes/display';
+import { indexTicketRouter } from './routes/index';
+import { updateTicketRouter } from './routes/update';
 
 const app = express();
 
@@ -21,6 +23,8 @@ app.use(
 app.use(currentUser);
 app.use(createTicketRouter);
 app.use(displayTicketRouter);
+app.use(indexTicketRouter);
+app.use(updateTicketRouter);
 app.use(errorHandler);
 
 export { app };
