@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { app } from './app';
+import { natsWrapper } from './natsWrapper';
 
 const dbConnect = async () => {
   if (!process.env.JWT_KEY) {
@@ -11,6 +12,21 @@ const dbConnect = async () => {
   }
 
   try {
+    await natsWrapper.connect(
+      'ticketing',
+      'sweetmonkeys',
+      'http://nats-srv:4222'
+    );
+
+    natsWrapper.client.on('close', () => {
+      console.log('NATS connection closed!');
+      process.exit();
+    });
+
+    process.on('SIGINT' || 'SIGTERM', () => {
+      natsWrapper.client.close();
+    });
+
     await mongoose.connect(process.env.MONGO_URI_TICKETS, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
