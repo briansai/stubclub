@@ -7,6 +7,9 @@ import {
   UnauthorizedError
 } from '@stubclub/common';
 import { Ticket } from '../models/ticket';
+import { TicketUpdatedPublisher } from '../events/publishers/ticketUpdatedPublisher';
+import { natsWrapper } from '../natsWrapper';
+import { privateEncrypt } from 'crypto';
 
 const router = express.Router();
 
@@ -25,6 +28,7 @@ router.put(
   validateRequest,
   async (req: Request, res: Response) => {
     const ticket = await Ticket.findById(req.params.id);
+    const { title, price } = req.body;
 
     if (!ticket) {
       throw new NotFoundError();
@@ -35,11 +39,18 @@ router.put(
     }
 
     ticket.set({
-      title: req.body.title,
-      price: req.body.price
+      title,
+      price
     });
 
     await ticket.save();
+
+    new TicketUpdatedPublisher(natsWrapper.client).publish({
+      id: ticket.id,
+      title: ticket.title,
+      price: ticket.price,
+      userId: ticket.userId
+    });
 
     res.send(ticket);
   }
