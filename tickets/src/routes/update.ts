@@ -9,7 +9,6 @@ import {
 import { Ticket } from '../models/ticket';
 import { TicketUpdatedPublisher } from '../events/publishers/ticketUpdatedPublisher';
 import { natsWrapper } from '../natsWrapper';
-import { privateEncrypt } from 'crypto';
 
 const router = express.Router();
 
@@ -45,7 +44,7 @@ router.put(
 
     await ticket.save();
 
-    new TicketUpdatedPublisher(natsWrapper.client).publish({
+    await new TicketUpdatedPublisher(natsWrapper.client).publish({
       id: ticket.id,
       title: ticket.title,
       price: ticket.price,
