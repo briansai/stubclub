@@ -4,18 +4,19 @@ import { TicketDoc } from './ticket';
 
 // An interface that describes the properties
 // that are required to create a new Order
-interface OrderAttributes {
+interface OrderAttrs {
   userId: string;
-  status: string;
+  status: OrderStatus;
   expiresAt: Date;
   ticket: TicketDoc;
 }
 
 // An interface that describes the properties
 // that a Order Document has
+
 interface OrderDoc extends mongoose.Document {
   userId: string;
-  status: string;
+  status: OrderStatus;
   expiresAt: Date;
   ticket: TicketDoc;
 }
@@ -23,7 +24,7 @@ interface OrderDoc extends mongoose.Document {
 // An interface that describes the properties
 // that an Order Model has
 interface OrderModel extends mongoose.Model<OrderDoc> {
-  build(attrs: OrderAttributes): OrderDoc;
+  build(attrs: OrderAttrs): OrderDoc;
 }
 
 const orderSchema = new mongoose.Schema(
@@ -50,15 +51,16 @@ const orderSchema = new mongoose.Schema(
     toJSON: {
       transform(doc, ret) {
         ret.id = ret._id;
-        delete ret.id;
+        delete ret._id;
       }
     }
   }
 );
 
-orderSchema.statics.build = (attrs: OrderAttributes) => {
+orderSchema.statics.build = (attrs: OrderAttrs) => {
   return new Order(attrs);
 };
 
-export const Order = mongoose.model<OrderDoc, OrderModel>('Order', orderSchema);
-export { OrderStatus };
+const Order = mongoose.model<OrderDoc, OrderModel>('Order', orderSchema);
+
+export { Order, OrderStatus };
