@@ -12,7 +12,8 @@ router.get(
   '/api/orders/:orderId',
   requireAuth,
   async (req: Request, res: Response) => {
-    const order = await Order.findById(req.params.orderId).populate('ticket');
+    const { orderId } = req.params;
+    const order = await Order.findById(orderId).populate('ticket');
 
     if (!order) {
       throw new NotFoundError();
