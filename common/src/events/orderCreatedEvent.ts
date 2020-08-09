@@ -6,7 +6,6 @@ export interface OrderCreatedEvent {
   data: {
     id: string;
     userId: string;
-    orderId: string;
     status: OrderStatus;
     expiresAt: string;
     ticket: {
