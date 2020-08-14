@@ -55,9 +55,10 @@ router.post(
 
     await order.save();
 
-    const { id, status, userId } = order;
+    const { id, version, status, userId } = order;
     new OrderCreatedPublisher(natsWrapper.client).publish({
       id,
+      version,
       status,
       userId,
       expiresAt: order.expiresAt.toISOString(),
