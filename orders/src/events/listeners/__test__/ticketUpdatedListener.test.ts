@@ -1,13 +1,8 @@
-import mongoose from 'mongoose';
 import { Message } from 'node-nats-streaming';
-import { TicketUpdatedEvent } from '@stubclub/common';
+import { TicketUpdatedEvent, generateMongoId } from '@stubclub/common';
 import { TicketUpdatedListener } from '../ticketUpdatedListener';
 import { natsWrapper } from '../../../natsWrapper';
 import { Ticket } from '../../../models/ticket';
-
-const generateMongoId = () => {
-  return new mongoose.Types.ObjectId().toHexString();
-};
 
 const setup = async () => {
   // create an instance of the listener
