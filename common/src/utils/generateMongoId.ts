@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
 
 export const generateMongoId = () => {
-  return mongoose.Types.ObjectId().toHexString();
+  return new mongoose.Types.ObjectId().toHexString();
 };
