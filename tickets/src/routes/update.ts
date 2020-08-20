@@ -4,7 +4,8 @@ import {
   validateRequest,
   NotFoundError,
   requireAuth,
-  UnauthorizedError
+  UnauthorizedError,
+  BadRequestError
 } from '@stubclub/common';
 import { Ticket } from '../models/ticket';
 import { TicketUpdatedPublisher } from '../events/publishers/ticketUpdatedPublisher';
@@ -33,6 +34,10 @@ router.put(
       throw new NotFoundError();
     }
 
+    if (ticket.orderId) {
+      throw new BadRequestError('Cannot edit a reserved ticket');
+    }
+
     if (ticket.userId !== req.currentUser!.id) {
       throw new UnauthorizedError();
     }
@@ -44,12 +49,20 @@ router.put(
 
     await ticket.save();
 
+    const {
+      id,
+      version,
+      userId,
+      title: ticketTitle,
+      price: ticketPrice
+    } = ticket;
+
     await new TicketUpdatedPublisher(natsWrapper.client).publish({
-      id: ticket.id,
-      version: ticket.version,
-      title: ticket.title,
-      price: ticket.price,
-      userId: ticket.userId
+      id,
+      version,
+      userId,
+      title: ticketTitle,
+      price: ticketPrice
     });
 
     res.send(ticket);
