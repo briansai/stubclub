@@ -1,4 +1,4 @@
-import { natsWrapper } from './natsWrapper';
+import { natsWrapper } from '../natsWrapper';
 
 const natsConnect = async () => {
   if (!process.env.NATS_CLIENT_ID) {
