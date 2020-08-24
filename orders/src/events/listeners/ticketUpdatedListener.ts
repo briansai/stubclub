@@ -1,7 +1,7 @@
 import { Message } from 'node-nats-streaming';
 import { Subjects, Listener, TicketUpdatedEvent } from '@stubclub/common';
 import { Ticket } from '../../models/ticket';
-import { queueGroupName } from './queuGroupName';
+import { queueGroupName } from './queueGroupName';
 
 export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {
   subject: Subjects.TicketUpdated = Subjects.TicketUpdated;
