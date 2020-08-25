@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import { app } from './app';
 import { natsWrapper } from './natsWrapper';
+import { OrderCancelledListener } from './events/listeners/orderCancelledListener';
+import { OrderCreatedListener } from './events/listeners/orderCreatedListener';
 
 const dbConnect = async () => {
   if (!process.env.JWT_KEY) {
@@ -36,6 +38,9 @@ const dbConnect = async () => {
     process.on('SIGINT' || 'SIGTERM', () => {
       natsWrapper.client.close();
     });
+
+    new OrderCreatedListener(natsWrapper.client).listen();
+    new OrderCancelledListener(natsWrapper.client).listen();
 
     await mongoose.connect(process.env.MONGO_URI_PAYMENTS, {
       useNewUrlParser: true,
