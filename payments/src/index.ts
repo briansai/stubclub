@@ -7,7 +7,7 @@ const dbConnect = async () => {
     throw new Error('JWT_KEY must be defined');
   }
 
-  if (!process.env.MONGO_URI_TICKETS) {
+  if (!process.env.MONGO_URI_PAYMENTS) {
     throw new Error('MONGO_URI must be defined');
   }
 
@@ -37,7 +37,7 @@ const dbConnect = async () => {
       natsWrapper.client.close();
     });
 
-    await mongoose.connect(process.env.MONGO_URI_TICKETS, {
+    await mongoose.connect(process.env.MONGO_URI_PAYMENTS, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true
