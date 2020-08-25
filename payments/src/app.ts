@@ -3,6 +3,7 @@ import 'express-async-errors';
 import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
 import { errorHandler, currentUser } from '@stubclub/common';
+import { createChargeRouter } from './routes/new';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(
 );
 
 app.use(currentUser);
+app.use(createChargeRouter);
 app.use(errorHandler);
 
 export { app };
