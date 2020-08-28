@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@stubclub/common": "^1.0.17",
+    "@stubclub/common": "^1.0.18",
     "@types/bull": "^3.14.1",
     "bull": "^3.18.0",
     "node-nats-streaming": "^0.3.2",
