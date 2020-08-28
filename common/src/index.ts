@@ -19,5 +19,6 @@ export * from './events/types/orderStatus';
 export * from './events/orderCancelledEvent';
 export * from './events/orderCreatedEvent';
 export * from './events/expirationCompleteEvent';
+export * from './events/paymentCreatedEvent';
 
 export * from './utils/generateMongoId';
