@@ -7,7 +7,7 @@ const inputText = {
   password: ''
 };
 
-export default () => {
+const SignUp = () => {
   const [{ email, password }, setState] = useState(inputText);
   const { doRequest, errors } = useRequest({
     url: '/api/users/signup',
@@ -56,3 +56,5 @@ export default () => {
     </form>
   );
 };
+
+export default SignUp;

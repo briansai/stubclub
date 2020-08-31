@@ -1,5 +1,3 @@
-import buildClient from '../api/buildClient';
-
 const LandingPage = ({ currentUser }) => {
   return currentUser ? (
     <h1>You are signed in</h1>
