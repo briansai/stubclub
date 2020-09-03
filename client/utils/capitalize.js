@@ -1,4 +1,4 @@
-const capitalize = (str: string) => {
+export const capitalize = str => {
   const sentence = [];
   const words = str.split(' ');
   for (let word of words) {
