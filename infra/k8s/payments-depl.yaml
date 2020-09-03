@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: payments
-          image: us.gcr.io/stubclub/payments
+          # image: us.gcr.io/stubclub/payments
+          image: brianwsai/payments
           env:
             - name: NATS_CLIENT_ID
               valueFrom:
