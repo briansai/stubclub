@@ -6,7 +6,7 @@ const LandingPage = ({ currentUser, tickets }) => {
     return (
       <tr key={id}>
         <td>{title}</td>
-        <td>{price}</td>
+        <td>{`$${price}`}</td>
         <td>
           <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`}>
             <a>View</a>
