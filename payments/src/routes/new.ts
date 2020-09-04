@@ -55,7 +55,7 @@ router.post(
 
     const { id, orderId: ordId, stripeId } = payment;
 
-    await new PaymentCreatedPublisher(natsWrapper.client).publish({
+    new PaymentCreatedPublisher(natsWrapper.client).publish({
       id,
       orderId: ordId,
       stripeId
