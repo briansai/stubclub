@@ -20,7 +20,7 @@ router.put(
     body('title')
       .not()
       .isEmpty()
-      .withMessage('Title is requiested'),
+      .withMessage('Title is requested'),
     body('price')
       .isFloat({ gt: 0 })
       .withMessage('Price must be greater than 0')

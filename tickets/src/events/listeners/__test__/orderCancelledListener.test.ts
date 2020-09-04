@@ -1,9 +1,5 @@
 import { Message } from 'node-nats-streaming';
-import {
-  OrderCancelledEvent,
-  generateMongoId,
-  OrderStatus
-} from '@stubclub/common';
+import { OrderCancelledEvent, generateMongoId } from '@stubclub/common';
 import { OrderCancelledListener } from '../orderCancelledListener';
 import { natsWrapper } from '../../../natsWrapper';
 import { Ticket } from '../../../models/ticket';
