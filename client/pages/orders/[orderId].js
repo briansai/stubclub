@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import Router from 'next/router';
 import useRequest from '../../hooks/useRequest';
 
 const Order = ({ order, currentUser }) => {
@@ -10,7 +11,10 @@ const Order = ({ order, currentUser }) => {
     body: {
       orderId: order.id
     },
-    onSuccess: payment => console.log(payment)
+    onSuccess: payment => {
+      console.log('hello');
+      Router.push('/orders');
+    }
   });
 
   useEffect(() => {
@@ -36,7 +40,7 @@ const Order = ({ order, currentUser }) => {
     <div>
       Order expires in: {timeLeft} seconds
       <StripeCheckout
-        token={({ id }) => console.log(id)}
+        token={({ id }) => doRequest({ token: id })}
         stripeKey={process.env.STRIPE_PUBLISHABLE_KEY}
         amount={order.ticket.price * 100}
         email={currentUser.email}
