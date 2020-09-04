@@ -14,7 +14,15 @@ spec:
     spec:
       containers:
         - name: client
-          image: us.gcr.io/stubclub/client
+          # image: us.gcr.io/stubclub/client
+          image: brianwsai/client
+          env:
+            - name: STRIPE_PUBLISHABLE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: stripe-publishable
+                  key: STRIPE_PUBLISHABLE_KEY
+
 ---
 apiVersion: v1
 kind: Service

@@ -1,3 +1,4 @@
+import { generateMongoId } from '@stubclub/common';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
@@ -39,7 +40,7 @@ afterAll(async () => {
 });
 
 global.signin = () => {
-  const id = new mongoose.Types.ObjectId().toHexString();
+  const id = generateMongoId();
   const payload = {
     id,
     email: 'test@test.com'

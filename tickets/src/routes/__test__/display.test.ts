@@ -1,10 +1,11 @@
 import request from 'supertest';
+import { generateMongoId } from '@stubclub/common';
 import { app } from '../../app';
 import mongoose from 'mongoose';
 
 it('returns a 404 if the ticket is not found', async () => {
   // Generate valid object ID from mongoose to test
-  const id = new mongoose.Types.ObjectId().toHexString();
+  const id = generateMongoId();
   await request(app)
     .get(`/api/tickets/${id}`)
     .send()
