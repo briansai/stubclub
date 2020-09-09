@@ -1,0 +1,26 @@
+@import './navigation.scss';
+@import './container.scss';
+
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+ul {
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.main {
+  font-family: 'Lato', sans-serif;
+}

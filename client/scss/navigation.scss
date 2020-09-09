@@ -1,16 +1,32 @@
+@mixin brand($width) {
+  width: $width;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .navbar {
   height: 5vh;
+  padding: 2%;
+  -webkit-box-shadow: 0 3px 5px #888888;
+  -moz-box-shadow: 0 3px 5px #888888;
+  box-shadow: 0 3px 5px #888888;
 
-  &-brand {
-    width: 70%;
-    font-size: 2rem;
-  }
-
-  &-item {
-    width: 10%;
-  }
-
-  ul {
+  &-list {
     display: flex;
+    align-items: center;
+
+    &-brandA {
+      @include brand(76%);
+    }
+
+    &-brandB {
+      @include brand(84%);
+    }
+
+    &-item {
+      width: 8%;
+      height: auto;
+      position: relative;
+    }
   }
 }

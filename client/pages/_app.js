@@ -1,6 +1,6 @@
 import buildClient from '../api/buildClient';
 import Navigation from '../components/navigation';
-import '../scss/main.scss';
+import '../scss/_app.scss';
 
 const AppComponent = ({ Component, pageProps, currentUser }) => {
   return (
