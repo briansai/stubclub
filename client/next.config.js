@@ -1,3 +1,8 @@
+const withSass = require('@zeit/next-sass');
+module.exports = withSass({
+  cssModules: true
+});
+
 // NextJS doesn't always detect file changes and doesn't update in docker container.
 // Pull all different files once every 300 ms.
 module.exports = {

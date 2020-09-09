@@ -2,15 +2,36 @@ import Link from 'next/link';
 
 const Navigation = ({ currentUser }) => {
   const links = [
-    !currentUser && { label: 'Sign Up', href: '/auth/signup' },
-    !currentUser && { label: 'Sign In', href: '/auth/signin' },
-    currentUser && { label: 'Sell Tickets', href: '/tickets/new' },
-    currentUser && { label: 'My Orders', href: '/orders' },
-    currentUser && { label: 'Sign Out', href: '/auth/signout' }
+    !currentUser && {
+      label: 'Sign Up',
+      href: '/auth/signup',
+      classname: 'navbar-item'
+    },
+    !currentUser && {
+      label: 'Sign In',
+      href: '/auth/signin',
+      classname: 'navbar-item'
+    },
+    currentUser && { label: 'StubClub', href: '/', classname: 'navbar-brand' },
+    currentUser && {
+      label: 'Sell Tickets',
+      href: '/tickets/new',
+      classname: 'navbar-item'
+    },
+    currentUser && {
+      label: 'My Orders',
+      href: '/orders',
+      classname: 'navbar-item'
+    },
+    currentUser && {
+      label: 'Sign Out',
+      href: '/auth/signout',
+      classname: 'navbar-item'
+    }
   ]
     .filter(linkConfig => linkConfig)
-    .map(({ label, href }) => (
-      <li key={href} className="nav-item">
+    .map(({ label, href, classname }) => (
+      <li key={href} className={classname}>
         <Link href={href}>
           <a className="nav-link">{label}</a>
         </Link>
@@ -18,14 +39,9 @@ const Navigation = ({ currentUser }) => {
     ));
 
   return (
-    <nav className="navbar navbar-light bg-light">
-      <Link href="/">
-        <a className="navbar-brand">StubClub</a>
-      </Link>
-      <div className="d-flex justify-content-end">
-        <ul className="nav d-flex align-items-center">{links}</ul>
-      </div>
-    </nav>
+    <div className="navbar">
+      <ul>{links}</ul>
+    </div>
   );
 };
 

@@ -11,10 +11,7 @@ const Order = ({ order, currentUser }) => {
     body: {
       orderId: order.id
     },
-    onSuccess: payment => {
-      console.log('hello');
-      Router.push('/orders');
-    }
+    onSuccess: () => Router.push('/orders')
   });
 
   useEffect(() => {

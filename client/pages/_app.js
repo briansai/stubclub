@@ -1,10 +1,10 @@
-import 'bootstrap/dist/css/bootstrap.css';
 import buildClient from '../api/buildClient';
 import Navigation from '../components/navigation';
+import '../scss/main.scss';
 
 const AppComponent = ({ Component, pageProps, currentUser }) => {
   return (
-    <div>
+    <div className="main">
       <Navigation currentUser={currentUser} />
       <div className="container">
         <Component currentUser={currentUser} {...pageProps} />

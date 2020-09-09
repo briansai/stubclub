@@ -1,0 +1,16 @@
+.navbar {
+  height: 5vh;
+
+  &-brand {
+    width: 70%;
+    font-size: 2rem;
+  }
+
+  &-item {
+    width: 10%;
+  }
+
+  ul {
+    display: flex;
+  }
+}
