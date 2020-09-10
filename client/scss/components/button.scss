@@ -1,4 +1,4 @@
-@mixin button {
+@mixin button($width) {
   .btn {
     cursor: pointer;
     font-family: sans-serif;
@@ -8,11 +8,16 @@
     border-radius: 0.25rem;
     border: 1px solid transparent;
     line-height: 2.5rem;
-    width: 100%;
+    width: $width;
 
     &-primary {
       color: white;
       background-color: #007bff;
+    }
+
+    &-secondary {
+      color: white;
+      background-color: #33cc33;
     }
   }
 }

@@ -15,7 +15,7 @@
     width: 80%;
     margin: 8% 11%;
 
-    @include button;
+    @include button(100%);
   }
 
   &-group {
