@@ -4,31 +4,22 @@ const LandingPage = ({ currentUser, tickets }) => {
   const ticketList = tickets.map(ticket => {
     const { id, title, price } = ticket;
     return (
-      <tr key={id}>
-        <td>{title}</td>
-        <td>{`$${price}`}</td>
-        <td>
-          <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`}>
-            <a>View</a>
-          </Link>
-        </td>
-      </tr>
+      <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`} key={id}>
+        <a className="ticket-item">
+          <div className="ticket-item-title">{title}</div>
+          <div className="ticket-item-price">
+            <div className="ticket-item-price-name">price</div>
+            <div className="ticket-item-price-num">{`$${price}`}</div>
+          </div>
+        </a>
+      </Link>
     );
   });
 
   return (
     <div>
-      <h1>Tickets</h1>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Link</th>
-          </tr>
-        </thead>
-        <tbody>{ticketList}</tbody>
-      </table>
+      <h1 className="container">Tickets</h1>
+      <div className="ticket">{ticketList}</div>
     </div>
   );
 };

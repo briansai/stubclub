@@ -1,0 +1,58 @@
+@import './scss/variables/_variables.scss';
+
+.container {
+  padding: 2% 8%;
+}
+
+.ticket {
+  width: 85%;
+  margin: 0 auto;
+  border: 0.5px solid $color-gray;
+  border-radius: 5px;
+  box-shadow: 0 1rem 2rem $color-gray;
+
+  &-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 15vh;
+
+    &-title {
+      line-height: 2;
+      padding-left: 3%;
+      margin-left: 5%;
+      border-left: 3px solid $color-gray;
+      font-size: 1.5rem;
+      color: #336699;
+    }
+
+    &-price {
+      margin-right: 3%;
+
+      &-name {
+        float: right;
+        color: #b3b3b3;
+        font-size: 0.8rem;
+      }
+
+      &-num {
+        font-size: 1.2rem;
+      }
+    }
+
+    &:last-child {
+      border-top: 0.5px solid $color-gray;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 0.5px solid $color-gray;
+    }
+
+    &:hover {
+      transition-duration: 1s;
+      background-color: #e6f7ff;
+    }
+  }
+}
