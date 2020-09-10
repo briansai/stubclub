@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Router from 'next/router';
+import { capitalize } from '../../utils/capitalize';
 import useRequest from '../../hooks/useRequest';
 
 const inputText = {
@@ -7,7 +8,11 @@ const inputText = {
   password: ''
 };
 
-const SignUp = () => {
+const SignIn = () => {
+  const items = [
+    { name: 'email', placeholder: 'e.g. stubclub@gmail.com' },
+    { name: 'password', placeholder: 'Must be between 4-20 characters' }
+  ];
   const [{ email, password }, setState] = useState(inputText);
   const { doRequest, errors } = useRequest({
     url: '/api/users/signup',
@@ -30,31 +35,30 @@ const SignUp = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <h1>Sign Up</h1>
-      <div className="form-group">
-        <label>Email Address</label>
-        <input
-          name="email"
-          value={email}
-          onChange={handleInputChange}
-          className="form-control"
-        />
-      </div>
-      <div className="form-group">
-        <label>Password</label>
-        <input
-          name="password"
-          value={password}
-          onChange={handleInputChange}
-          type="password"
-          className="form-control"
-        />
-      </div>
-      {errors}
-      <button className="btn btn-primary">Sign Up</button>
-    </form>
+    <div className="form">
+      <h1 className="header">Sign Up</h1>
+      <div>{errors}</div>
+      <form onSubmit={onSubmit}>
+        {items.map(item => {
+          const { name, placeholder } = item;
+          return (
+            <div className="form-group" key={name}>
+              <label className="form-group-label">{capitalize(name)} </label>
+              <input
+                className="form-group-input"
+                onChange={handleInputChange}
+                name={name}
+                placeholder={placeholder}
+              />
+            </div>
+          );
+        })}
+        <div className="btn-container">
+          <button className="btn btn-primary">Sign Up</button>
+        </div>
+      </form>
+    </div>
   );
 };
 
-export default SignUp;
+export default SignIn;
