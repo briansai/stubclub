@@ -9,7 +9,10 @@ const input = {
 };
 
 const NewTicket = () => {
-  const items = ['title', 'price'];
+  const items = [
+    { name: 'title', placeholder: 'Ticket Name' },
+    { name: 'price', placeholder: 'e.g. 456' }
+  ];
   const [{ title, price }, setState] = useState(input);
   const { doRequest, errors } = useRequest({
     url: '/api/tickets',
@@ -29,26 +32,32 @@ const NewTicket = () => {
 
   const handleInputChange = e => {
     const { name, value } = e.target;
+
     setState(prevState => ({ ...prevState, [name]: value }));
   };
 
   return (
-    <div>
-      <h1>Create a new ticket</h1>
+    <div className="form">
+      <h1 className="header">Create a new ticket</h1>
+      <div>{errors}</div>
       <form onSubmit={onSubmit}>
         {items.map(item => {
+          const { name, placeholder } = item;
           return (
-            <div className="form-group" key={item}>
-              <label>{capitalize(item)}</label>
+            <div className="form-group" key={name}>
+              <label className="form-group-label">{capitalize(name)} </label>
               <input
-                className="form-control"
+                className="form-group-input"
                 onChange={handleInputChange}
-                name={item}
+                name={name}
+                placeholder={placeholder}
               />
             </div>
           );
         })}
-        <button className="btn btn-primary">Submit</button>
+        <div className="btn-container">
+          <button className="btn btn-primary">Submit</button>
+        </div>
       </form>
     </div>
   );

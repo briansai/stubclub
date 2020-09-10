@@ -1,5 +1,7 @@
 @import './navigation.scss';
 @import './index.scss';
+@import './components/form.scss';
+@import './components/errors.scss';
 
 body {
   margin: 0;
@@ -13,10 +15,6 @@ a:visited {
 
 ul {
   margin: 0;
-}
-
-li {
-  list-style: none;
 }
 
 .main {

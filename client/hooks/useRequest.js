@@ -15,14 +15,15 @@ const useRequest = ({ url, method, body, onSuccess }) => {
       }
 
       return response.data;
-    } catch (err) {
+    } catch (error) {
       setErrors(
-        <div className="alert alert-danger">
-          <h4>Something went wrong</h4>
-          <ul className="my-0">
-            {err.response.data.errors.map(err => (
-              <li key={err.message}>{err.message}</li>
-            ))}
+        <div className="error">
+          <div className="error-text">Something went wrong:</div>
+          <ul>
+            {error.response.data.errors.map(err => {
+              const { message } = err;
+              return <li key={message}>{message}</li>;
+            })}
           </ul>
         </div>
       );
