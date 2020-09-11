@@ -1,0 +1,17 @@
+@mixin error($width) {
+  .error {
+    width: $width;
+    margin: 6% auto;
+    background-color: pink;
+    border: 1px solid pink;
+    border-radius: 5px;
+    padding: 5%;
+
+    &-text {
+      color: #800015;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 5%;
+    }
+  }
+}

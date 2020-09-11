@@ -12,10 +12,10 @@ const Ticket = ({ ticket }) => {
     onSuccess: order => Router.push('/orders/[orderId]', `/orders/${order.id}`)
   });
   return (
-    <div className="ticket">
+    <div className="purchase">
       <div className="title">{title}</div>
       <h4>Price: ${price}</h4>
-      {errors}
+      <div className="purchase-error">{errors}</div>
       <button className="btn btn-secondary" onClick={() => doRequest()}>
         Purchase
       </button>
