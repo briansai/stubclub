@@ -1,15 +1,12 @@
 @import './scss/_variables.scss';
+@import './mixins/container.scss';
 
 .container {
-  padding: 2% 8%;
+  padding: 2% 20%;
 }
 
 .ticket {
-  width: 85%;
-  margin: 0 auto;
-  border: 0.5px solid $color-gray;
-  border-radius: 5px;
-  box-shadow: 0 1rem 2rem $color-gray;
+  @include container(60%, 0, auto, 0, auto);
 
   &-item {
     display: flex;
@@ -17,7 +14,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    height: 15vh;
+    height: 13vh;
 
     &-title {
       line-height: 2;

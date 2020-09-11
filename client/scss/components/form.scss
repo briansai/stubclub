@@ -1,12 +1,9 @@
 @import './button.scss';
 @import './mixins/error.scss';
+@import './mixins/container.scss';
 
 .form {
-  width: 25%;
-  margin: 5% auto 0 auto;
-  border: 0.5px solid $color-gray;
-  border-radius: 5px;
-  box-shadow: 0 1rem 2rem $color-gray;
+  @include container(25%, 5%, auto, 0, auto);
 
   .header {
     text-align: center;
