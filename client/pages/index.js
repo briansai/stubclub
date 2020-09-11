@@ -16,10 +16,14 @@ const LandingPage = ({ currentUser, tickets }) => {
     );
   });
 
+  const list = ticketList.length
+    ? ticketList
+    : 'There are no tickets available at the moment.';
+
   return (
     <div>
       <h1 className="container">Tickets</h1>
-      <div className="ticket">{ticketList}</div>
+      <div className="ticket">{list}</div>
     </div>
   );
 };

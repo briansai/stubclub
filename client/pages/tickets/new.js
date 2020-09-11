@@ -45,7 +45,11 @@ const NewTicket = () => {
           const { name, placeholder } = item;
           return (
             <div className="form-group" key={name}>
-              <label className="form-group-label">{capitalize(name)} </label>
+              <div className="form-group-label">
+                <label className="form-group-label-text">
+                  {capitalize(name)}{' '}
+                </label>
+              </div>
               <input
                 className="form-group-input"
                 onChange={handleInputChange}
