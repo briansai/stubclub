@@ -1,5 +1,3 @@
-@import './margin.scss';
-
 @mixin container($width, $top, $right, $bottom, $left) {
   width: $width;
   margin: $top $right $bottom $left;

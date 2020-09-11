@@ -21,8 +21,13 @@ const LandingPage = ({ currentUser, tickets }) => {
     : 'There are no tickets available at the moment.';
 
   return (
-    <div>
-      <h1 className="container">Tickets</h1>
+    <div className="body">
+      <div className="container">
+        <h1 className="container-text">Tickets</h1>
+        <div className="jumbotron">
+          <div className="jumbotron-text">TICKETS</div>
+        </div>
+      </div>
       <div className="ticket">{list}</div>
     </div>
   );
