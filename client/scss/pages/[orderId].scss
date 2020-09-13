@@ -1,0 +1,29 @@
+@import '../utils/mixins/container.scss';
+@import '../utils/mixins/header.scss';
+@import '../utils/mixins/error.scss';
+@import '../components/button.scss';
+
+.expiration {
+  @include container(25%, 10%, auto, 0, auto);
+  @include header;
+  position: relative;
+  height: 30vh;
+
+  &-body {
+    @include button(100%);
+
+    position: absolute;
+    top: 60%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+
+    &-item {
+      text-align: center;
+      margin: 15% 0;
+    }
+  }
+
+  &-error {
+    @include error(85%);
+  }
+}

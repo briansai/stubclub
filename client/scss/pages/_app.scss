@@ -1,7 +1,9 @@
 @import './navigation.scss';
 @import './index.scss';
 @import './purchase.scss';
-@import './components/form.scss';
+@import './[orderId].scss';
+@import '../components/box.scss';
+@import '../components/form.scss';
 
 body {
   margin: 0;

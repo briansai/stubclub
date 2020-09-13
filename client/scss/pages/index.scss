@@ -1,11 +1,11 @@
-@import './scss/_variables.scss';
-@import './components/jumbotron.scss';
-@import './mixins/container.scss';
+@import '../components/jumbotron.scss';
+@import '../utils/variables/_variables.scss';
+@import '../utils/mixins/container.scss';
 
 .body {
   height: 100vh;
 
-  .container {
+  &-container {
     position: relative;
 
     &-text {
@@ -16,6 +16,15 @@
       bottom: 0;
       padding: 0 0 0 7%;
       z-index: 100;
+    }
+  }
+
+  .empty {
+    @include container(25%, 7%, auto, 10%, auto);
+
+    &-text {
+      margin: 20%;
+      text-align: center;
     }
   }
 

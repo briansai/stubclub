@@ -16,19 +16,25 @@ const LandingPage = ({ currentUser, tickets }) => {
     );
   });
 
-  const list = ticketList.length
-    ? ticketList
-    : 'There are no tickets available at the moment.';
+  const list = ticketList.length ? (
+    <div className="ticket">{ticketList}</div>
+  ) : (
+    <div className="empty">
+      <div className="empty-text">
+        There are no tickets available at the moment.
+      </div>
+    </div>
+  );
 
   return (
     <div className="body">
-      <div className="container">
-        <h1 className="container-text">Tickets</h1>
+      <div className="body-container">
+        <h1 className="body-container-text">Tickets</h1>
         <div className="jumbotron">
           <div className="jumbotron-text">TICKETS</div>
         </div>
       </div>
-      <div className="ticket">{list}</div>
+      {list}
     </div>
   );
 };

@@ -1,14 +1,11 @@
 @import './button.scss';
-@import './mixins/error.scss';
-@import './mixins/container.scss';
+@import '../utils/mixins/error.scss';
+@import '../utils/mixins/header.scss';
+@import '../utils/mixins/container.scss';
 
 .form {
   @include container(25%, 5%, auto, 0, auto);
-
-  .header {
-    text-align: center;
-    margin: 8% 5%;
-  }
+  @include header;
 
   .btn-container {
     width: 80%;

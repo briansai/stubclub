@@ -1,6 +1,6 @@
 import buildClient from '../api/buildClient';
 import Navigation from '../components/navigation';
-import '../scss/_app.scss';
+import '../scss/pages/_app.scss';
 
 const AppComponent = ({ Component, pageProps, currentUser }) => (
   <div className="main">
