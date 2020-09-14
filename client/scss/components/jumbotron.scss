@@ -9,6 +9,10 @@
   line-height: 0.83;
   overflow: hidden;
 
+  &:hover {
+    cursor: default;
+  }
+
   &-text {
     opacity: 0.2;
   }

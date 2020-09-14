@@ -35,11 +35,11 @@ const Navigation = ({ currentUser }) => {
   ]
     .filter(linkConfig => linkConfig)
     .map(({ label, href, classname }) => (
-      <li key={href} className={classname}>
-        <Link href={href}>
+      <Link href={href}>
+        <li key={href} className={classname}>
           <a className="navbar-list-brand-label">{label}</a>
-        </Link>
-      </li>
+        </li>
+      </Link>
     ));
 
   return (

@@ -6,7 +6,8 @@ import Router from 'next/router';
 import useRequest from '../../hooks/useRequest';
 
 const Order = ({ order, currentUser }) => {
-  const [timeLeft, setTimeLeft] = useState('');
+  const [timeLeftSec, setTimeLeftSec] = useState('');
+  const [formattedTimeLeft, setFormattedTime] = useState('');
   const { doRequest, errors } = useRequest({
     url: '/api/payments',
     method: 'post',
@@ -19,8 +20,10 @@ const Order = ({ order, currentUser }) => {
   useEffect(() => {
     const findTimeLeft = () => {
       const msLeft = new Date(order.expiresAt) - new Date();
-      // const formattedTime = moment.utc(msLeft).format('mm:ss');
-      setTimeLeft(msLeft);
+      const formattedTime = moment.utc(msLeft).format('mm:ss');
+
+      setFormattedTime(formattedTime);
+      setTimeLeftSec(msLeft);
     };
 
     findTimeLeft();
@@ -32,12 +35,14 @@ const Order = ({ order, currentUser }) => {
   }, [order]);
 
   const content =
-    timeLeft > 0
+    timeLeftSec > 0
       ? {
           header: 'Order',
           body: (
             <Fragment>
-              <div className="box-body-item">Order expires in: {timeLeft}</div>
+              <div className="box-body-item">
+                Order expires in: {formattedTimeLeft}
+              </div>
               <div className="box-body-item">
                 <StripeCheckout
                   token={({ id }) => doRequest({ token: id })}
