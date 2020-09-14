@@ -1,5 +1,6 @@
 import { useEffect, useState, Fragment } from 'react';
 import moment from 'moment';
+import Link from 'next/link';
 import StripeCheckout from 'react-stripe-checkout';
 import Router from 'next/router';
 import useRequest from '../../hooks/useRequest';
@@ -51,9 +52,9 @@ const Order = ({ order, currentUser }) => {
       : {
           header: 'Order Expired',
           body: (
-            <Fragment>
+            <Link href="/">
               <button className="btn btn-primary">Back To Tickets</button>
-            </Fragment>
+            </Link>
           )
         };
 

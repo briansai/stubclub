@@ -37,7 +37,7 @@ const SignIn = () => {
   return (
     <div className="form">
       <h1 className="header">Sign Up</h1>
-      <div>{errors}</div>
+      <div className="form-error">{errors}</div>
       <form onSubmit={onSubmit}>
         {items.map(item => {
           const { name, placeholder } = item;

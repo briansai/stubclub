@@ -5,7 +5,6 @@ const Navigation = ({ currentUser }) => {
     {
       label: 'StubClub',
       href: '/',
-      // classname: `navbar-list-brand${currentUser ? 'A' : 'B'}`
       classname: `navbar-list-brand`
     },
     !currentUser && {
