@@ -1,32 +1,42 @@
-@mixin brand($width) {
-  width: $width;
+@mixin brand {
   font-size: 1.5rem;
   font-weight: bold;
+  align-items: center;
 }
 
 .navbar {
-  height: 4vh;
-  padding: 2%;
+  height: 12vh;
   -webkit-box-shadow: 0 3px 5px #888888;
   -moz-box-shadow: 0 3px 5px #888888;
   box-shadow: 0 3px 5px #888888;
 
   &-list {
+    height: 100%;
     display: flex;
     align-items: center;
 
-    &-brandA {
-      @include brand(76%);
-    }
+    &-brand {
+      @include brand;
+      flex-grow: 2;
 
-    &-brandB {
-      @include brand(84%);
+      &-label:hover {
+        cursor: pointer;
+      }
     }
 
     &-item {
       width: 8%;
-      height: auto;
+      line-height: 3;
       position: relative;
+      align-items: center;
+      text-align: center;
+    }
+
+    &-item:hover {
+      cursor: pointer;
+      color: #ffffff;
+      background-color: #000000;
+      border-radius: 0.5rem;
     }
 
     li {

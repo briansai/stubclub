@@ -5,7 +5,8 @@ const Navigation = ({ currentUser }) => {
     {
       label: 'StubClub',
       href: '/',
-      classname: `navbar-list-brand${currentUser ? 'A' : 'B'}`
+      // classname: `navbar-list-brand${currentUser ? 'A' : 'B'}`
+      classname: `navbar-list-brand`
     },
     !currentUser && {
       label: 'Sign Up',
@@ -37,7 +38,7 @@ const Navigation = ({ currentUser }) => {
     .map(({ label, href, classname }) => (
       <li key={href} className={classname}>
         <Link href={href}>
-          <a>{label}</a>
+          <a className="navbar-list-brand-label">{label}</a>
         </Link>
       </li>
     ));
