@@ -34,6 +34,10 @@ const Order = ({ order, currentUser }) => {
     };
   }, [order]);
 
+  const payWithCard = () => {
+    alert('Please use card number: 4242 4242 4242 4242');
+  };
+
   const content =
     timeLeftSec > 0
       ? {
@@ -49,7 +53,11 @@ const Order = ({ order, currentUser }) => {
                   stripeKey={process.env.STRIPE_PUBLISHABLE_KEY}
                   amount={order.ticket.price * 100}
                   email={currentUser.email}
-                />
+                >
+                  <button onClick={payWithCard} className="btn btn-primary">
+                    Pay With Card
+                  </button>
+                </StripeCheckout>
               </div>
             </Fragment>
           )
