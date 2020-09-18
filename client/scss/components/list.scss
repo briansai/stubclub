@@ -81,7 +81,7 @@
     &-items {
       display: flex;
       justify-content: space-between;
-      padding: 5% 20% 0 20%;
+      padding: 5% 20%;
       overflow: scroll;
 
       &-item {
@@ -99,10 +99,6 @@
 
       .green {
         color: #0a9e40;
-      }
-
-      &:last-child {
-        padding-bottom: 5%;
       }
     }
   }
