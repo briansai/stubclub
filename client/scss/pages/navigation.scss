@@ -17,7 +17,7 @@
 
     &-brand {
       @include brand;
-      flex-grow: 2;
+      flex: 8 2 10%;
 
       &-label:hover {
         cursor: pointer;
@@ -25,11 +25,11 @@
     }
 
     &-item {
-      width: 8%;
       line-height: 3;
       position: relative;
       align-items: center;
       text-align: center;
+      flex: 1 10 3%;
     }
 
     &-item:hover {

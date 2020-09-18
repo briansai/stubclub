@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import List from '../components/list';
 
 const LandingPage = ({ currentUser, tickets }) => {
   const ticketList = tickets.map(ticket => {
@@ -16,16 +17,6 @@ const LandingPage = ({ currentUser, tickets }) => {
     );
   });
 
-  const list = ticketList.length ? (
-    <div className="ticket">{ticketList}</div>
-  ) : (
-    <div className="empty">
-      <div className="empty-text">
-        There are no tickets available at the moment.
-      </div>
-    </div>
-  );
-
   return (
     <div className="body">
       <div className="body-container">
@@ -34,7 +25,11 @@ const LandingPage = ({ currentUser, tickets }) => {
           <div className="jumbotron-text">TICKETS</div>
         </div>
       </div>
-      {list}
+      <List
+        content={ticketList}
+        className="ticket"
+        message="There are no tickets available at the moment."
+      />
     </div>
   );
 };
