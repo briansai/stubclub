@@ -1,9 +1,12 @@
 import { Fragment } from 'react';
 
 const List = ({ message, className, content }) => {
+  const list =
+    (Array.isArray(content) && content.length) ||
+    Object.getPrototypeOf(content) === Object.prototype;
   return (
     <Fragment>
-      {content ? (
+      {list ? (
         <div className={className}>{content}</div>
       ) : (
         <div className="empty">
