@@ -24,12 +24,14 @@ const OrderIndex = ({ orders }) => {
     );
   });
 
-  const content = () => (
-    <Fragment>
-      <div className="orders-subject">{subject}</div>
-      {items}
-    </Fragment>
-  );
+  const content = () => {
+    return (
+      <Fragment>
+        <div className="orders-subject">{subject}</div>
+        {items}
+      </Fragment>
+    );
+  };
 
   return (
     <div className="body">

@@ -3,7 +3,9 @@ import { Fragment } from 'react';
 const List = ({ message, className, content }) => {
   const list =
     (Array.isArray(content) && content.length) ||
-    Object.getPrototypeOf(content) === Object.prototype;
+    (!Array.isArray(content) &&
+      typeof content === 'object' &&
+      content.props.children[1].length);
   return (
     <Fragment>
       {list ? (
