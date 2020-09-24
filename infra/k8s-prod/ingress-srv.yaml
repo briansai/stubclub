@@ -8,9 +8,8 @@ metadata:
     cert-manager.io/cluster-issuer: 'letsencrypt-prod'
 spec:
   tls:
-    - hosts:
-        - www.stubclub.me
-        secretName: letsencrypt-prod
+  - host: www.stubclub.me
+      secretName: letsencrypt-prod
   rules:
     - host: www.stubclub.me
       http:
