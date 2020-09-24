@@ -6,6 +6,7 @@
 .form {
   @include container(25%, 5%, auto, 0, auto);
   @include header;
+  min-width: 180px;
 
   .btn-container {
     width: 80%;

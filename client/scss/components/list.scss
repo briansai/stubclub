@@ -63,6 +63,7 @@
   .orders {
     @include container(40%, 5%, auto, 5%, auto);
     height: 80%;
+    min-width: 280px;
 
     &-subject {
       display: flex;
