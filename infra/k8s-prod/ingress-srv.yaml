@@ -10,6 +10,7 @@ spec:
   tls:
     - hosts:
         - www.stubclub.me
+        secretName: letsencrypt-prod
   rules:
     - host: www.stubclub.me
       http:
