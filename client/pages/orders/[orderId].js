@@ -35,7 +35,10 @@ const Order = ({ order, currentUser }) => {
   }, [order]);
 
   const payWithCard = () => {
-    alert('Please use card number: 4242 4242 4242 4242');
+    alert(`Please use:
+      - card number: 4242 4242 4242 4242
+      - exp: any valid future date
+      - cvc: any three digit number`);
   };
 
   const content =

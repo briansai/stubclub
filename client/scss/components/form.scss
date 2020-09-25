@@ -4,9 +4,8 @@
 @import '../utils/mixins/container.scss';
 
 .form {
-  @include container(25%, 5%, auto, 0, auto);
+  @include container(380px, 120px, auto, 120px, auto);
   @include header;
-  min-width: 180px;
 
   .btn-container {
     width: 80%;

@@ -3,7 +3,7 @@
 
 @mixin list {
   .empty {
-    @include container(25%, 7%, auto, 10%, auto);
+    @include container(380px, 130px, auto, 130px, auto);
 
     &-text {
       margin: 20%;
@@ -13,6 +13,7 @@
 
   .ticket {
     @include container(75%, 7%, auto, 10%, auto);
+    min-width: 380px;
 
     &-item {
       display: flex;
