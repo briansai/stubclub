@@ -17,9 +17,11 @@ const OrderIndex = ({ orders }) => {
   const items = orders.map(order => {
     const { id, ticket, status } = order;
     return (
-      <div className="orders-items" key={id}>
-        <div className="orders-items-item">{ticket.title}</div>
-        <div className={`orders-items-item ${textColor[status]}`}>{status}</div>
+      <div className="orders-items-list" key={id}>
+        <div className="orders-items-list-item">{ticket.title}</div>
+        <div className={`orders-items-list-item ${textColor[status]}`}>
+          {status}
+        </div>
       </div>
     );
   });
@@ -28,7 +30,7 @@ const OrderIndex = ({ orders }) => {
     return (
       <Fragment>
         <div className="orders-subject">{subject}</div>
-        {items}
+        <div className="orders-items">{items}</div>
       </Fragment>
     );
   };
