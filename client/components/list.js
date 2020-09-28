@@ -5,7 +5,7 @@ const List = ({ message, className, content }) => {
     (Array.isArray(content) && content.length) ||
     (!Array.isArray(content) &&
       typeof content === 'object' &&
-      content.props.children[1].length);
+      content.props.children[1].props.children.length);
   return (
     <Fragment>
       {list ? (

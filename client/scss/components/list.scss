@@ -81,30 +81,34 @@
     }
 
     &-items {
-      display: flex;
-      justify-content: space-between;
-      padding: 5% 20% 0 20%;
       overflow: scroll;
+      height: 85%;
 
-      &-item {
-        min-width: 40%;
-        text-align: center;
-      }
+      &-list {
+        display: flex;
+        justify-content: space-between;
+        padding: 5% 20% 0 20%;
 
-      .red {
-        color: #ef1010;
-      }
+        &-item {
+          min-width: 40%;
+          text-align: center;
+        }
 
-      .blue {
-        color: #1021ef;
-      }
+        .red {
+          color: #ef1010;
+        }
 
-      .green {
-        color: #0a9e40;
-      }
+        .blue {
+          color: #1021ef;
+        }
 
-      &:last-child {
-        padding-bottom: 5%;
+        .green {
+          color: #0a9e40;
+        }
+
+        &:last-child {
+          padding-bottom: 5%;
+        }
       }
     }
   }

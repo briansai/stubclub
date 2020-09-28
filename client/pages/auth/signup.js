@@ -49,6 +49,7 @@ const SignIn = () => {
                 onChange={handleInputChange}
                 name={name}
                 placeholder={placeholder}
+                type={name}
               />
             </div>
           );
