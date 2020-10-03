@@ -31,7 +31,6 @@ router.post(
   async (req: Request, res: Response) => {
     const { ticketId } = req.body;
     const ticket = await Ticket.findById(ticketId);
-
     if (!ticket) {
       throw new NotFoundError();
     }
