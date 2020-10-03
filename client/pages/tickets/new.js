@@ -8,7 +8,7 @@ const input = {
   price: ''
 };
 
-const NewTicket = props => {
+const NewTicket = ({ admin }) => {
   const items = [
     { name: 'title', placeholder: 'Ticket Name' },
     { name: 'price', placeholder: 'e.g. 456' }
@@ -40,7 +40,7 @@ const NewTicket = props => {
     <div className="form">
       <h1 className="header">Create a new ticket</h1>
       <div className="form-error">{errors}</div>
-      <form onSubmit={onSubmit}>
+      <form>
         {items.map(item => {
           const { name, placeholder } = item;
           return (
@@ -59,7 +59,12 @@ const NewTicket = props => {
             </div>
           );
         })}
-        <div className="btn-container">
+        {admin ? (
+          <div className="btn-container">
+            <button className="btn btn-secondary">Seed</button>
+          </div>
+        ) : null}
+        <div className="btn-container" onClick={onSubmit}>
           <button className="btn btn-primary">Submit</button>
         </div>
       </form>
