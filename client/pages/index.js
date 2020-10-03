@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import List from '../components/list';
 
-const LandingPage = ({ currentUser, tickets }) => {
+const LandingPage = ({ admin, currentUser, tickets }) => {
   const ticketList = tickets.map(ticket => {
     const { id, title, price } = ticket;
     return (

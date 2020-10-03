@@ -8,7 +8,7 @@ const input = {
   price: ''
 };
 
-const NewTicket = () => {
+const NewTicket = props => {
   const items = [
     { name: 'title', placeholder: 'Ticket Name' },
     { name: 'price', placeholder: 'e.g. 456' }
