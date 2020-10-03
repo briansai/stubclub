@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Router from 'next/router';
 import { capitalize } from '../../utils/capitalize';
 import useRequest from '../../hooks/useRequest';
+import Button from '../../components/button';
 
 const input = {
   title: '',
@@ -23,11 +24,17 @@ const NewTicket = ({ admin }) => {
     },
     onSuccess: () => Router.push('/')
   });
+  const { doRequest: seed } = useRequest({
+    url: '/api/tickets/seed',
+    method: 'post',
+    body: {},
+    onSuccess: () => Router.push('/')
+  });
 
-  const onSubmit = event => {
+  const buttonClick = event => {
     event.preventDefault();
 
-    doRequest();
+    event.target.name === 'Submit' ? doRequest() : seed();
   };
 
   const handleInputChange = e => {
@@ -60,13 +67,9 @@ const NewTicket = ({ admin }) => {
           );
         })}
         {admin ? (
-          <div className="btn-container">
-            <button className="btn btn-secondary">Seed</button>
-          </div>
+          <Button color="secondary" text="Seed" onClick={buttonClick} />
         ) : null}
-        <div className="btn-container" onClick={onSubmit}>
-          <button className="btn btn-primary">Submit</button>
-        </div>
+        <Button color="primary" text="Submit" onClick={buttonClick} />
       </form>
     </div>
   );

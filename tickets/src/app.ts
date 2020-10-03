@@ -7,6 +7,7 @@ import { createTicketRouter } from './routes/new';
 import { displayTicketRouter } from './routes/display';
 import { indexTicketRouter } from './routes/index';
 import { updateTicketRouter } from './routes/update';
+import { seedTicketRouter } from './routes/seed';
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(createTicketRouter);
 app.use(displayTicketRouter);
 app.use(indexTicketRouter);
 app.use(updateTicketRouter);
+app.use(seedTicketRouter);
 app.use(errorHandler);
 
 export { app };
