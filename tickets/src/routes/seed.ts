@@ -15,10 +15,10 @@ router.post(
 
     const tickets = [];
 
-    for (let x = 0; x < 1000; x++) {
+    for (let x = 0; x < req.body.num; x++) {
       const ticket = Ticket.build({
-        title: faker.name.title(),
-        price: faker.random.number(),
+        title: faker.commerce.productName(),
+        price: faker.random.number({ min: 50, max: 1000 }),
         userId: req.currentUser!.id
       });
 

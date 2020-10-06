@@ -27,7 +27,7 @@ const NewTicket = ({ admin }) => {
   const { doRequest: seed } = useRequest({
     url: '/api/tickets/seed',
     method: 'post',
-    body: {},
+    body: { num: 200 },
     onSuccess: () => Router.push('/')
   });
 
@@ -66,10 +66,10 @@ const NewTicket = ({ admin }) => {
             </div>
           );
         })}
+        <Button color="primary" text="Submit" onClick={buttonClick} />
         {admin ? (
           <Button color="secondary" text="Seed" onClick={buttonClick} />
         ) : null}
-        <Button color="primary" text="Submit" onClick={buttonClick} />
       </form>
     </div>
   );

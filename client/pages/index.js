@@ -1,8 +1,22 @@
+import { useState } from 'react';
 import Link from 'next/link';
+import ReactPaginate from 'react-paginate';
 import List from '../components/list';
 
-const LandingPage = ({ admin, currentUser, tickets }) => {
-  const ticketList = tickets.map(ticket => {
+const LandingPage = ({ tickets }) => {
+  const [selectedPage, setSelectedPage] = useState(1);
+  let endIndex = 10 * selectedPage;
+  let startIndex = endIndex - 10;
+  const data =
+    endIndex < tickets.length
+      ? tickets.slice(startIndex, endIndex)
+      : tickets.slice(startIndex, tickets.length);
+  const handlePageClick = event => {
+    setSelectedPage(event.selected + 1);
+    window.scrollTo(0, 0);
+  };
+
+  const ticketList = data.map(ticket => {
     const { id, title, price } = ticket;
     return (
       <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`} key={id}>
@@ -30,6 +44,21 @@ const LandingPage = ({ admin, currentUser, tickets }) => {
         className="ticket"
         message="There are no tickets available at the moment."
       />
+      <div className="pagination-container">
+        <ReactPaginate
+          pageCount={Math.ceil(tickets.length / 10)}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={1}
+          onPageChange={handlePageClick}
+          previousLabel="<"
+          nextLabel=">"
+          breakLabel="..."
+          containerClassName={'pagination'}
+          subContainerClassName={'pagination-pages'}
+          activeClassName={'active'}
+          eventListener="onClick"
+        />
+      </div>
     </div>
   );
 };

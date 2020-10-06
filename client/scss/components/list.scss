@@ -12,7 +12,7 @@
   }
 
   .ticket {
-    @include container(75%, 7%, auto, 10%, auto);
+    @include container(75%, 7%, auto, 2%, auto);
     min-width: 380px;
 
     &-item {
