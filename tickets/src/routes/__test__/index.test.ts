@@ -7,7 +7,8 @@ const createTicket = async () => {
     .set('Cookie', global.signin())
     .send({
       title: 'potatos',
-      price: 20
+      price: 20,
+      date: new Date()
     });
 };
 

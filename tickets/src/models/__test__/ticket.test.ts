@@ -5,7 +5,8 @@ it('implements versions with optimistic concurrency control during transactions'
   const ticket = Ticket.build({
     title: 'potatos',
     price: 100,
-    userId: '123'
+    userId: '123',
+    date: new Date()
   });
 
   // Save the ticket to the database
@@ -36,7 +37,8 @@ it('increments the version number on multiple saves', async () => {
   const ticket = Ticket.build({
     title: 'potatos',
     price: 100,
-    userId: '123'
+    userId: '123',
+    date: new Date()
   });
 
   await ticket.save();

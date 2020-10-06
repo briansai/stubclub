@@ -20,7 +20,8 @@ it('returns the ticket if the ticket is found', async () => {
     .set('Cookie', global.signin())
     .send({
       title,
-      price
+      price,
+      date: new Date()
     })
     .expect(201);
 

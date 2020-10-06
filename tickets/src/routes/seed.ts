@@ -19,7 +19,8 @@ router.post(
       const ticket = Ticket.build({
         title: faker.commerce.productName(),
         price: faker.random.number({ min: 50, max: 1000 }),
-        userId: req.currentUser!.id
+        userId: req.currentUser!.id,
+        date: new Date()
       });
 
       tickets.push(ticket);

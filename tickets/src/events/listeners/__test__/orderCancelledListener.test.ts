@@ -9,7 +9,8 @@ const setup = async () => {
   const ticket = Ticket.build({
     title: 'potatos',
     price: 200,
-    userId: '123'
+    userId: '123',
+    date: new Date()
   });
 
   ticket.set({ orderId: generateMongoId() }), await ticket.save();
