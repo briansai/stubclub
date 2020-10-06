@@ -34,7 +34,8 @@ it('returns an error if an invalid title is provided', async () => {
     .set('Cookie', global.signin())
     .send({
       title: '',
-      price: 10
+      price: 10,
+      date: new Date()
     });
 
   expect(response.status).toEqual(400);
@@ -46,7 +47,8 @@ it('returns an error if an invalid price is provided', async () => {
     .set('Cookie', global.signin())
     .send({
       title: 'Sweet Potato',
-      price: -10
+      price: -10,
+      date: new Date()
     })
     .expect(400);
 
@@ -54,7 +56,8 @@ it('returns an error if an invalid price is provided', async () => {
     .post('/api/tickets')
     .set('Cookie', global.signin())
     .send({
-      title: 'Sweet Potato'
+      title: 'Sweet Potato',
+      date: new Date()
     })
     .expect(400);
 });
@@ -69,7 +72,8 @@ it('creates a ticket with valid inputs', async () => {
     .set('Cookie', global.signin())
     .send({
       title,
-      price: 20
+      price: 20,
+      date: new Date()
     });
 
   expect(response.status).toEqual(201);
@@ -88,7 +92,8 @@ it('publishes an event', async () => {
     .set('Cookie', global.signin())
     .send({
       title,
-      price: 20
+      price: 20,
+      date: new Date()
     });
 
   expect(natsWrapper.client.publish).toHaveBeenCalled();
