@@ -2,13 +2,14 @@ import { useState } from 'react';
 import Router from 'next/router';
 import { capitalize } from '../../utils/capitalize';
 import useRequest from '../../hooks/useRequest';
+import Button from '../../components/button';
 
 const input = {
   title: '',
   price: ''
 };
 
-const NewTicket = () => {
+const NewTicket = ({ admin }) => {
   const items = [
     { name: 'title', placeholder: 'Ticket Name' },
     { name: 'price', placeholder: 'e.g. 456' }
@@ -23,11 +24,17 @@ const NewTicket = () => {
     },
     onSuccess: () => Router.push('/')
   });
+  const { doRequest: seed } = useRequest({
+    url: '/api/tickets/seed',
+    method: 'post',
+    body: { num: 200 },
+    onSuccess: () => Router.push('/')
+  });
 
-  const onSubmit = event => {
+  const buttonClick = event => {
     event.preventDefault();
 
-    doRequest();
+    event.target.name === 'Submit' ? doRequest() : seed();
   };
 
   const handleInputChange = e => {
@@ -40,7 +47,7 @@ const NewTicket = () => {
     <div className="form">
       <h1 className="header">Create a new ticket</h1>
       <div className="form-error">{errors}</div>
-      <form onSubmit={onSubmit}>
+      <form>
         {items.map(item => {
           const { name, placeholder } = item;
           return (
@@ -59,9 +66,10 @@ const NewTicket = () => {
             </div>
           );
         })}
-        <div className="btn-container">
-          <button className="btn btn-primary">Submit</button>
-        </div>
+        <Button color="primary" text="Submit" onClick={buttonClick} />
+        {admin ? (
+          <Button color="secondary" text="Seed" onClick={buttonClick} />
+        ) : null}
       </form>
     </div>
   );

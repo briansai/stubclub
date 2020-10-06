@@ -12,7 +12,7 @@
   }
 
   .ticket {
-    @include container(75%, 7%, auto, 10%, auto);
+    @include container(75%, 7%, auto, 2%, auto);
     min-width: 380px;
 
     &-item {
@@ -81,34 +81,30 @@
     }
 
     &-items {
+      display: flex;
+      justify-content: space-between;
+      padding: 5% 20% 0 20%;
       overflow: scroll;
-      height: 85%;
 
-      &-list {
-        display: flex;
-        justify-content: space-between;
-        padding: 5% 20% 0 20%;
+      &-item {
+        min-width: 40%;
+        text-align: center;
+      }
 
-        &-item {
-          min-width: 40%;
-          text-align: center;
-        }
+      .red {
+        color: #ef1010;
+      }
 
-        .red {
-          color: #ef1010;
-        }
+      .blue {
+        color: #1021ef;
+      }
 
-        .blue {
-          color: #1021ef;
-        }
+      .green {
+        color: #0a9e40;
+      }
 
-        .green {
-          color: #0a9e40;
-        }
-
-        &:last-child {
-          padding-bottom: 5%;
-        }
+      &:last-child {
+        padding-bottom: 5%;
       }
     }
   }

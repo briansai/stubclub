@@ -2,10 +2,10 @@ import buildClient from '../api/buildClient';
 import Navigation from '../components/navigation';
 import '../scss/pages/_app.scss';
 
-const AppComponent = ({ Component, pageProps, currentUser }) => (
+const AppComponent = ({ Component, pageProps, currentUser, admin }) => (
   <div className="main">
     <Navigation currentUser={currentUser} />
-    <Component currentUser={currentUser} {...pageProps} />
+    <Component currentUser={currentUser} admin={admin} {...pageProps} />
   </div>
 );
 
@@ -18,7 +18,8 @@ AppComponent.getInitialProps = async appContext => {
     pageProps = await appContext.Component.getInitialProps(
       appContext.ctx,
       client,
-      data.currentUser
+      data.currentUser,
+      data.admin
     );
   }
 

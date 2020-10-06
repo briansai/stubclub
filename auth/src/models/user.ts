@@ -6,6 +6,7 @@ import { PasswordManager } from '../services/passwordManager';
 interface UserAttributes {
   email: string;
   password: string;
+  admin: boolean;
 }
 
 // An interface that describes the properties
@@ -13,6 +14,7 @@ interface UserAttributes {
 interface UserDoc extends mongoose.Document {
   email: string;
   password: string;
+  admin: boolean;
 }
 
 // An interface that describes the properties
@@ -29,6 +31,10 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
+      required: true
+    },
+    admin: {
+      type: Boolean,
       required: true
     }
   },

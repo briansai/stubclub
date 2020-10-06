@@ -27,7 +27,9 @@ router.post(
       throw new BadRequestError('Email in use');
     }
 
-    const user = User.build({ email, password });
+    const admin = email === 'yummy@gmail.com';
+
+    const user = User.build({ email, password, admin });
     await user.save();
 
     // Generate JWT
@@ -41,7 +43,8 @@ router.post(
 
     // Store it on session object
     req.session = {
-      jwt: userJwt
+      jwt: userJwt,
+      admin
     };
 
     res.status(201).send(user);
