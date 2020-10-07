@@ -25,7 +25,7 @@ router.post(
 
     const ticket = Ticket.build({
       title,
-      price,
+      price: price.toFixed(),
       userId: req.currentUser!.id,
       date: new Date()
     });
