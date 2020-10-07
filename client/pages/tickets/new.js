@@ -20,7 +20,7 @@ const NewTicket = ({ admin }) => {
     method: 'post',
     body: {
       title,
-      price: parseFloat(price).toFixed()
+      price: Number(price)
     },
     onSuccess: () => Router.push('/')
   });
