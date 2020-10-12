@@ -4,7 +4,7 @@
 @import './button.scss';
 
 .box {
-  @include container(280px, 120px, auto, 120px, auto);
+  @include container(280px, 180px, auto, 120px, auto);
   @include header;
   position: relative;
   height: 30vh;
