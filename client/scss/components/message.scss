@@ -1,0 +1,56 @@
+@import '../utils/variables/variables';
+
+.message {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  &-box {
+    position: absolute;
+    right: 0;
+    width: 13%;
+    min-width: 165px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 1%;
+    margin-right: 1%;
+    background-color: $color-green-light;
+    border: 0.5px solid $color-green-dark;
+    box-shadow: 0 0.5rem 3rem $color-green-dark;
+    animation: moveFromRight 1s ease-out;
+
+    &-contents {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  &-box:after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    border-width: 20px;
+    border-color: transparent transparent transparent $color-green-light;
+    border-style: solid;
+  }
+}
+
+@keyframes moveFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

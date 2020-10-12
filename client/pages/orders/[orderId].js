@@ -4,10 +4,12 @@ import Link from 'next/link';
 import StripeCheckout from 'react-stripe-checkout';
 import Router from 'next/router';
 import useRequest from '../../hooks/useRequest';
+import Message from '../../components/message';
 
 const Order = ({ order, currentUser }) => {
   const [timeLeftSec, setTimeLeftSec] = useState('');
   const [formattedTimeLeft, setFormattedTime] = useState('');
+  // const [pay, setPay] = useState(false);
   const { doRequest, errors } = useRequest({
     url: '/api/payments',
     method: 'post',
@@ -35,10 +37,13 @@ const Order = ({ order, currentUser }) => {
   }, [order]);
 
   const payWithCard = () => {
-    alert(`Please use:
-      - card number: 4242 4242 4242 4242
-      - exp: any valid future date
-      - cvc: any three digit number`);
+    // setPay(true);
+  };
+
+  const message = {
+    card: 4242424242,
+    expiration: 323,
+    cvv: 480
   };
 
   const content =
@@ -76,11 +81,14 @@ const Order = ({ order, currentUser }) => {
 
   const { header, body } = content;
   return (
-    <div className="box">
-      <h2 className="header">{header}</h2>
-      {errors}
-      <div className="box-body">{body}</div>
-    </div>
+    <Fragment>
+      <Message message={message} />
+      <div className="box">
+        <h2 className="header">{header}</h2>
+        {errors}
+        <div className="box-body">{body}</div>
+      </div>
+    </Fragment>
   );
 };
 
