@@ -7,38 +7,22 @@
 
   &-box {
     position: absolute;
-    right: -15px;
-    width: 15%;
+    right: 0;
+    width: 13%;
     min-width: 165px;
     padding: 20px;
     border-radius: 10px;
     margin-top: 1%;
-    margin-right: 3%;
+    margin-right: 1%;
     background-color: $color-green-light;
     border: 0.5px solid $color-green-dark;
     box-shadow: 0 0.5rem 3rem $color-green-dark;
     animation: moveFromRight 1s ease-out;
 
-    &-text {
-      margin-bottom: 15px;
-    }
-
     &-contents {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-
-      .clipboard {
-        background-color: transparent;
-        outline: none;
-        border: none;
-        display: inline-block;
-        position: relative;
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
 
       &:not(:last-child) {
         margin-bottom: 10px;

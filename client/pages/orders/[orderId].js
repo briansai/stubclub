@@ -9,6 +9,7 @@ import Message from '../../components/message';
 const Order = ({ order, currentUser }) => {
   const [timeLeftSec, setTimeLeftSec] = useState('');
   const [formattedTimeLeft, setFormattedTime] = useState('');
+  // const [pay, setPay] = useState(false);
   const { doRequest, errors } = useRequest({
     url: '/api/payments',
     method: 'post',
@@ -35,10 +36,14 @@ const Order = ({ order, currentUser }) => {
     };
   }, [order]);
 
-  const cardInfo = {
+  const payWithCard = () => {
+    // setPay(true);
+  };
+
+  const message = {
     card: 4242424242,
-    expiration: 'Any future date',
-    CVV: 'Any three numbers'
+    expiration: 323,
+    cvv: 480
   };
 
   const content =
@@ -57,7 +62,9 @@ const Order = ({ order, currentUser }) => {
                   amount={order.ticket.price * 100}
                   email={currentUser.email}
                 >
-                  <button className="btn btn-primary">Pay With Card</button>
+                  <button onClick={payWithCard} className="btn btn-primary">
+                    Pay With Card
+                  </button>
                 </StripeCheckout>
               </div>
             </Fragment>
@@ -75,10 +82,7 @@ const Order = ({ order, currentUser }) => {
   const { header, body } = content;
   return (
     <Fragment>
-      <Message
-        cardInfo={cardInfo}
-        message="Please use this card number before purchasing."
-      />
+      <Message message={message} />
       <div className="box">
         <h2 className="header">{header}</h2>
         {errors}
