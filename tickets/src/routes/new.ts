@@ -22,6 +22,7 @@ router.post(
   validateRequest,
   async (req: Request, res: Response) => {
     const { title, price } = req.body;
+
     const ticket = Ticket.build({
       title,
       price: price.toFixed(),
