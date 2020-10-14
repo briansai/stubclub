@@ -2,45 +2,74 @@
 
 .message {
   position: relative;
-  width: 100%;
   z-index: 1;
 
   &-box {
     position: absolute;
-    right: 0;
-    width: 13%;
+    right: -15px;
+    width: 20%;
     min-width: 165px;
-    padding: 20px;
-    border-radius: 10px;
     margin-top: 1%;
-    margin-right: 1%;
-    background-color: $color-green-light;
-    border: 0.5px solid $color-green-dark;
-    box-shadow: 0 0.5rem 3rem $color-green-dark;
-    animation: moveFromRight 1s ease-out;
+    margin-right: 3%;
 
-    &-contents {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+    &-card {
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 2%;
+      background-color: $color-green-light;
+      border: 0.5px solid $color-green-dark;
+      box-shadow: 0 0.5rem 3rem $color-green-dark;
+      animation: moveFromRight 1s ease-out;
 
-      &:not(:last-child) {
-        margin-bottom: 10px;
+      &-text {
+        margin-bottom: 15px;
       }
-      &:last-child {
-        border-bottom: 0;
+
+      &-contents {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .clipboard {
+          background-color: transparent;
+          outline: none;
+          border: none;
+          display: inline-block;
+          position: relative;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+        &:last-child {
+          border-bottom: 0;
+        }
       }
     }
-  }
 
-  &-box:after {
-    content: '';
-    position: absolute;
-    top: 15px;
-    right: -30px;
-    border-width: 20px;
-    border-color: transparent transparent transparent $color-green-light;
-    border-style: solid;
+    &-card:after {
+      content: '';
+      position: absolute;
+      top: 15px;
+      right: -30px;
+      border-width: 20px;
+      border-color: transparent transparent transparent $color-green-light;
+      border-style: solid;
+    }
+
+    .copied {
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      background-color: #595959;
+      line-height: 2.5rem;
+      font-size: 1.5rem;
+      animation: moveFromBottom 0.8s ease-out;
+    }
   }
 }
 
@@ -49,6 +78,18 @@
     opacity: 0;
     transform: translateX(100px);
   }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+
   100% {
     opacity: 1;
     transform: translate(0);
