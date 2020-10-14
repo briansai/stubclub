@@ -36,14 +36,10 @@ const Order = ({ order, currentUser }) => {
     };
   }, [order]);
 
-  const payWithCard = () => {
-    // setPay(true);
-  };
-
-  const message = {
+  const cardInfo = {
     card: 4242424242,
-    expiration: 323,
-    cvv: 480
+    expiration: 'Any future date',
+    cvv: 'Any three numbers'
   };
 
   const content =
@@ -62,9 +58,7 @@ const Order = ({ order, currentUser }) => {
                   amount={order.ticket.price * 100}
                   email={currentUser.email}
                 >
-                  <button onClick={payWithCard} className="btn btn-primary">
-                    Pay With Card
-                  </button>
+                  <button className="btn btn-primary">Pay With Card</button>
                 </StripeCheckout>
               </div>
             </Fragment>
@@ -82,7 +76,10 @@ const Order = ({ order, currentUser }) => {
   const { header, body } = content;
   return (
     <Fragment>
-      <Message message={message} />
+      <Message
+        cardInfo={cardInfo}
+        message="Please use this card number before purchasing."
+      />
       <div className="box">
         <h2 className="header">{header}</h2>
         {errors}
