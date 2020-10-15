@@ -19,23 +19,23 @@ const useCopyToClipboard = text => {
       document.getSelection().removeAllRanges();
       document.getSelection().addRange(selected);
     }
-    return success ? '424242424242' : '';
+    return success;
   };
 
-  const [copied, setCopied] = useState('');
+  const [copied, setCopied] = useState(false);
 
   const copy = useCallback(() => {
     if (!copied) setCopied(copyToClipboard(text));
   }, [text]);
-  useEffect(() => () => setCopied(''), [text]);
-
+  useEffect(() => () => setCopied(false), [text]);
+  // console.log(copied);
   return [copied, copy];
 };
 
 const Message = ({ cardInfo, message }) => {
-  const [copied, copy] = useCopyToClipboard('');
+  const [copied, copy] = useCopyToClipboard('4242424242424242');
   const contents = Object.entries(cardInfo);
-
+  console.log(copied);
   return (
     <Fragment>
       <div className="message">
