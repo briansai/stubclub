@@ -9,7 +9,6 @@ import Message from '../../components/message';
 const Order = ({ order, currentUser }) => {
   const [timeLeftSec, setTimeLeftSec] = useState('');
   const [formattedTimeLeft, setFormattedTime] = useState('');
-  // const [pay, setPay] = useState(false);
   const { doRequest, errors } = useRequest({
     url: '/api/payments',
     method: 'post',
@@ -78,7 +77,7 @@ const Order = ({ order, currentUser }) => {
     <Fragment>
       <Message
         cardInfo={cardInfo}
-        message="Please use this card number before purchasing."
+        message="Please use this information before purchasing."
       />
       <div className="box">
         <h2 className="header">{header}</h2>

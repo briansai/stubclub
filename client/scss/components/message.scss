@@ -36,9 +36,12 @@
           border: none;
           display: inline-block;
           position: relative;
+          transition: all 0.3s;
+          transform-origin: 50% 50%;
 
           &:hover {
             cursor: pointer;
+            transform: scale(1.2);
           }
         }
 
