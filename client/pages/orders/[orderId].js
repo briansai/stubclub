@@ -76,7 +76,7 @@ const Order = ({ order, currentUser }) => {
   return (
     <Fragment>
       <Message
-        cardInfo={cardInfo}
+        info={info}
         message="Please use this information before purchasing."
       />
       <div className="box">

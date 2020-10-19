@@ -1,11 +1,11 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import Clipboard from '../icons/clipboard';
 import { capitalize } from '../utils/capitalize';
 import { useCopyToClipboard } from '../utils/clipboard';
 
-const Message = ({ cardInfo, message }) => {
+const Message = ({ info, message }) => {
   const [copied, copy] = useCopyToClipboard('4242424242424242');
-  const contents = Object.entries(cardInfo);
+  const contents = Object.entries(info);
 
   return (
     <Fragment>
