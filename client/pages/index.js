@@ -42,7 +42,7 @@ const LandingPage = ({ currentUser, tickets }) => {
       <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`} key={id}>
         <a className="ticket-item">
           <div className="ticket-item-title">{title}</div>
-          <div>{optionList(userId)}</div>
+          <div>{currentUser && optionList(userId)}</div>
           <div className="ticket-item-price">
             <div className="ticket-item-price-name">price</div>
             <div className="ticket-item-price-num">{`$${price}`}</div>
