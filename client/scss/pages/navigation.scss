@@ -1,3 +1,5 @@
+@import '../utils/variables/_variables.scss';
+
 @mixin brand {
   font-size: 1.5rem;
   font-weight: bold;
@@ -5,7 +7,6 @@
 }
 
 .navbar {
-  height: 12vh;
   -webkit-box-shadow: 0 3px 5px #888888;
   -moz-box-shadow: 0 3px 5px #888888;
   box-shadow: 0 3px 5px #888888;
@@ -26,11 +27,11 @@
 
     &-item {
       min-width: 120px;
-      line-height: 3;
       position: relative;
       align-items: center;
       text-align: center;
       flex: 1 10 3%;
+      padding: 10px 0;
     }
 
     &-item:hover {
@@ -49,18 +50,42 @@
     height: 100%;
     display: flex;
     align-items: center;
+    position: relative;
 
-    &-item {
+    &-label {
       min-width: 120px;
       line-height: 3;
-      position: relative;
       align-items: center;
       text-align: center;
-      flex: 1 10 3%;
+      cursor: default;
     }
 
-    &-item:hover {
-      cursor: default;
+    &-content {
+      display: none;
+      z-index: 100;
+      min-width: 120px;
+      position: absolute;
+      text-align: center;
+      bottom: -78px;
+
+      &-item {
+        padding: 10px;
+        background-color: white;
+        border: 1px solid black;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $color-gray-secondary;
+        }
+
+        &:last-child {
+          border-top: 0;
+        }
+      }
+    }
+
+    &:hover &-content {
+      display: block;
     }
   }
 }
