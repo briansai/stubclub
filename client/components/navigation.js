@@ -4,13 +4,13 @@ import { Fragment } from 'react';
 const Navigation = ({ currentUser }) => {
   const dropdown = [
     {
-      label: 'Sell Tickets',
-      href: '/tickets/new',
+      text: 'My Tickets',
+      href: '/tickets/',
       classname: 'navbar-dropdown-content-item'
     },
     {
-      label: 'My Tickets',
-      href: '/tickets/',
+      text: 'Sell Tickets',
+      href: '/tickets/new',
       classname: 'navbar-dropdown-content-item'
     }
   ];
@@ -67,10 +67,10 @@ const Navigation = ({ currentUser }) => {
               <li className={classname}>
                 <div className="navbar-dropdown-label">{label}</div>
                 <div className="navbar-dropdown-content">
-                  {dropdown.map(({ label, href, classname, type }) => (
-                    <Link href={href} type={type}>
+                  {dropdown.map(({ text, href, classname, type }) => (
+                    <Link href={href} type={type} key={text}>
                       <div className={classname}>
-                        <a>{label}</a>
+                        <a>{text}</a>
                       </div>
                     </Link>
                   ))}

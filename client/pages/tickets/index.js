@@ -1,18 +1,11 @@
-import { Fragment, useState } from 'react';
-import Link from 'next/link';
+import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import List from '../../components/list';
+import { paginate } from '../../utils/paginate';
 
 const UserTickets = ({ tickets }) => {
   const [selectedPage, setSelectedPage] = useState(1);
-  const itemsPerPage = 10;
-  let endIndex = itemsPerPage * selectedPage;
-  let startIndex = endIndex - itemsPerPage;
-  const pageCount = Math.ceil(tickets.length / 10);
-  const data =
-    endIndex < tickets.length
-      ? tickets.slice(startIndex, endIndex)
-      : tickets.slice(startIndex, tickets.length);
+  const { data, pageCount } = paginate(tickets, selectedPage);
   const handlePageClick = event => {
     setSelectedPage(event.selected + 1);
     window.scrollTo(0, 0);
@@ -21,15 +14,13 @@ const UserTickets = ({ tickets }) => {
   const ticketList = data.map(ticket => {
     const { id, title, price } = ticket;
     return (
-      <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`} key={id}>
-        <a className="ticket-item">
-          <div className="ticket-item-title">{title}</div>
-          <div className="ticket-item-price">
-            <div className="ticket-item-price-name">price</div>
-            <div className="ticket-item-price-num">{`$${price}`}</div>
-          </div>
-        </a>
-      </Link>
+      <div className="ticket" key={id}>
+        <div className="ticket-title">{title}</div>
+        <div className="ticket-price">
+          <div className="ticket-price-name">price</div>
+          <div className="ticket-price-num">{`$${price}`}</div>
+        </div>
+      </div>
     );
   });
 
@@ -43,8 +34,8 @@ const UserTickets = ({ tickets }) => {
       </div>
       <List
         content={ticketList}
-        className="ticket"
-        message="You currently have no tickets listed at the moment."
+        className="tickets"
+        message="You currently do not have any tickets listed at the moment."
       />
       <div className="pagination-container">
         {pageCount > 1 && (

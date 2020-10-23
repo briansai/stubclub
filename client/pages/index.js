@@ -2,15 +2,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import ReactPaginate from 'react-paginate';
 import List from '../components/list';
+import { paginate } from '../utils/paginate';
 
 const LandingPage = ({ tickets }) => {
   const [selectedPage, setSelectedPage] = useState(1);
-  let endIndex = 10 * selectedPage;
-  let startIndex = endIndex - 10;
-  const data =
-    endIndex < tickets.length
-      ? tickets.slice(startIndex, endIndex)
-      : tickets.slice(startIndex, tickets.length);
+  const { data, pageCount } = paginate(tickets, selectedPage);
   const handlePageClick = event => {
     setSelectedPage(event.selected + 1);
     window.scrollTo(0, 0);
@@ -20,11 +16,11 @@ const LandingPage = ({ tickets }) => {
     const { id, title, price } = ticket;
     return (
       <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`} key={id}>
-        <a className="ticket-item">
-          <div className="ticket-item-title">{title}</div>
-          <div className="ticket-item-price">
-            <div className="ticket-item-price-name">price</div>
-            <div className="ticket-item-price-num">{`$${price}`}</div>
+        <a className="ticket">
+          <div className="ticket-title">{title}</div>
+          <div className="ticket-price">
+            <div className="ticket-price-name">price</div>
+            <div className="ticket-price-num">{`$${price}`}</div>
           </div>
         </a>
       </Link>
@@ -41,23 +37,25 @@ const LandingPage = ({ tickets }) => {
       </div>
       <List
         content={ticketList}
-        className="ticket"
+        className="tickets-all"
         message="There are no tickets available at the moment."
       />
       <div className="pagination-container">
-        <ReactPaginate
-          pageCount={Math.ceil(tickets.length / 10)}
-          pageRangeDisplayed={5}
-          marginPagesDisplayed={1}
-          onPageChange={handlePageClick}
-          previousLabel="<"
-          nextLabel=">"
-          breakLabel="..."
-          containerClassName={'pagination'}
-          subContainerClassName={'pagination-pages'}
-          activeClassName={'active'}
-          eventListener="onClick"
-        />
+        {pageCount > 1 && (
+          <ReactPaginate
+            pageCount={Math.ceil(tickets.length / 10)}
+            pageRangeDisplayed={5}
+            marginPagesDisplayed={1}
+            onPageChange={handlePageClick}
+            previousLabel="<"
+            nextLabel=">"
+            breakLabel="..."
+            containerClassName={'pagination'}
+            subContainerClassName={'pagination-pages'}
+            activeClassName={'active'}
+            eventListener="onClick"
+          />
+        )}
       </div>
     </div>
   );
