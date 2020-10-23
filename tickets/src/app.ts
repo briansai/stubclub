@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
 import { errorHandler, currentUser } from '@stubclub/common';
 import { createTicketRouter } from './routes/new';
+import { userTicketRouter } from './routes/userTickets';
 import { displayTicketRouter } from './routes/display';
 import { indexTicketRouter } from './routes/index';
 import { updateTicketRouter } from './routes/update';
@@ -23,6 +24,7 @@ app.use(
 
 app.use(currentUser);
 app.use(createTicketRouter);
+app.use(userTicketRouter);
 app.use(displayTicketRouter);
 app.use(indexTicketRouter);
 app.use(updateTicketRouter);
