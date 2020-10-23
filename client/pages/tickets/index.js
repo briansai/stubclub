@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import Link from 'next/link';
 import ReactPaginate from 'react-paginate';
-import List from '../components/list';
-import { paginate } from '../utils/paginate';
+import List from '../../components/list';
+import { paginate } from '../../utils/paginate';
 
-const LandingPage = ({ tickets }) => {
+const UserTickets = ({ tickets }) => {
   const [selectedPage, setSelectedPage] = useState(1);
   const { data, pageCount } = paginate(tickets, selectedPage);
   const handlePageClick = event => {
@@ -15,35 +14,33 @@ const LandingPage = ({ tickets }) => {
   const ticketList = data.map(ticket => {
     const { id, title, price } = ticket;
     return (
-      <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`} key={id}>
-        <a className="ticket">
-          <div className="ticket-title">{title}</div>
-          <div className="ticket-price">
-            <div className="ticket-price-name">price</div>
-            <div className="ticket-price-num">{`$${price}`}</div>
-          </div>
-        </a>
-      </Link>
+      <div className="ticket" key={id}>
+        <div className="ticket-title">{title}</div>
+        <div className="ticket-price">
+          <div className="ticket-price-name">price</div>
+          <div className="ticket-price-num">{`$${price}`}</div>
+        </div>
+      </div>
     );
   });
 
   return (
     <div className="body">
       <div className="body-container">
-        <h1 className="body-container-text">Tickets</h1>
+        <h1 className="body-container-text">My Tickets</h1>
         <div className="jumbotron">
-          <div className="jumbotron-text">TICKETS</div>
+          <div className="jumbotron-text">MY TICKETS</div>
         </div>
       </div>
       <List
         content={ticketList}
-        className="tickets-all"
-        message="There are no tickets available at the moment."
+        className="tickets"
+        message="You currently do not have any tickets listed at the moment."
       />
       <div className="pagination-container">
         {pageCount > 1 && (
           <ReactPaginate
-            pageCount={Math.ceil(tickets.length / 10)}
+            pageCount={pageCount}
             pageRangeDisplayed={5}
             marginPagesDisplayed={1}
             onPageChange={handlePageClick}
@@ -61,10 +58,10 @@ const LandingPage = ({ tickets }) => {
   );
 };
 
-LandingPage.getInitialProps = async (context, client, currentUser) => {
-  const { data } = await client.get('/api/tickets');
+UserTickets.getInitialProps = async (context, client, currentUser) => {
+  const { data } = await client.get('/api/tickets/userTickets');
 
   return { tickets: data };
 };
 
-export default LandingPage;
+export default UserTickets;

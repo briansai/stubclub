@@ -4,9 +4,14 @@ import { Fragment } from 'react';
 const Navigation = ({ currentUser }) => {
   const dropdown = [
     {
-      label: 'Sell Tickets',
+      text: 'My Tickets',
+      href: '/tickets/',
+      classname: 'navbar-dropdown-content-item'
+    },
+    {
+      text: 'Sell Tickets',
       href: '/tickets/new',
-      classname: 'navbar-dropdown-item'
+      classname: 'navbar-dropdown-content-item'
     }
   ];
 
@@ -31,7 +36,7 @@ const Navigation = ({ currentUser }) => {
     },
     currentUser && {
       label: 'Tickets',
-      classname: 'navbar-dropdown-item',
+      classname: 'navbar-dropdown',
       type: 'dropdown'
     },
     currentUser && {
@@ -58,9 +63,20 @@ const Navigation = ({ currentUser }) => {
               </li>
             </Link>
           ) : (
-            <li className={classname}>
-              <a className="navbar-dropdown-label">{label}</a>
-            </li>
+            <Fragment>
+              <li className={classname}>
+                <div className="navbar-dropdown-label">{label}</div>
+                <div className="navbar-dropdown-content">
+                  {dropdown.map(({ text, href, classname, type }) => (
+                    <Link href={href} type={type} key={text}>
+                      <div className={classname}>
+                        <a>{text}</a>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </li>
+            </Fragment>
           )}
         </Fragment>
       );
