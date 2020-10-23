@@ -10,7 +10,7 @@ const Navigation = ({ currentUser }) => {
     },
     {
       label: 'My Tickets',
-      href: '/',
+      href: '/tickets/',
       classname: 'navbar-dropdown-content-item'
     }
   ];
