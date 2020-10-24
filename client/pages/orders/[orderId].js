@@ -35,7 +35,7 @@ const Order = ({ order, currentUser }) => {
     };
   }, [order]);
 
-  const cardInfo = {
+  const info = {
     card: 4242424242,
     expiration: 'Any future date',
     cvv: 'Any three numbers'
