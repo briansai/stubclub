@@ -35,7 +35,7 @@ const Order = ({ order, currentUser }) => {
     };
   }, [order]);
 
-  const cardInfo = {
+  const info = {
     card: 4242424242,
     expiration: 'Any future date',
     cvv: 'Any three numbers'
@@ -76,7 +76,7 @@ const Order = ({ order, currentUser }) => {
   return (
     <Fragment>
       <Message
-        cardInfo={cardInfo}
+        info={info}
         message="Please use this information before purchasing."
       />
       <div className="box">
