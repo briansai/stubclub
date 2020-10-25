@@ -13,7 +13,7 @@
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.19.2",
     "moment": "^2.27.0",
-    "next": "^9.4.4",
+    "next": "^9.5.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-paginate": "^6.5.0",
