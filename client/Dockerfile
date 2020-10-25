@@ -1,4 +1,4 @@
-FROM node
+FROM node:10.22
 
 WORKDIR /app
 COPY package.json .
