@@ -17,12 +17,15 @@ const Ticket = ({ ticket, currentUser }) => {
     <div className="purchase">
       <div className="title">{title}</div>
       <h4>Price: ${price}</h4>
-      <button
-        className="btn btn-secondary"
-        onClick={() => !currentUser && doRequest()}
-      >
-        <Link href={!currentUser ? '/auth/signup' : ''}>Purchase</Link>
-      </button>
+      {!currentUser ? (
+        <button className="btn btn-secondary">
+          <Link href="/auth/signup">Purchase</Link>
+        </button>
+      ) : (
+        <button className="btn btn-secondary" onClick={() => doRequest()}>
+          Purchase
+        </button>
+      )}
     </div>
   );
 };
