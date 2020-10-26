@@ -1,9 +1,11 @@
+import { Fragment } from 'react';
+import Link from 'next/link';
 import Router from 'next/router';
 import useRequest from '../../hooks/useRequest';
 
-const Ticket = ({ ticket }) => {
+const Ticket = ({ ticket, currentUser }) => {
   const { title, price } = ticket;
-  const { doRequest, errors } = useRequest({
+  const { doRequest } = useRequest({
     url: '/api/orders',
     method: 'post',
     body: {
@@ -15,9 +17,11 @@ const Ticket = ({ ticket }) => {
     <div className="purchase">
       <div className="title">{title}</div>
       <h4>Price: ${price}</h4>
-      <div className="purchase-error">{errors}</div>
-      <button className="btn btn-secondary" onClick={() => doRequest()}>
-        Purchase
+      <button
+        className="btn btn-secondary"
+        onClick={() => !currentUser && doRequest()}
+      >
+        <Link href={!currentUser ? '/auth/signup' : ''}>Purchase</Link>
       </button>
     </div>
   );
