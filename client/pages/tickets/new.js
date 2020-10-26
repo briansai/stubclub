@@ -43,14 +43,9 @@ const NewTicket = ({ admin }) => {
     if (name !== 'price') {
       setState(prevState => ({ ...prevState, [name]: value }));
     } else {
-      const onlyNums = value.replace(/[^0-9]/g, '');
-      let input = 0;
+      const onlyNums = value.replace(/\D/, '');
 
-      if (onlyNums) {
-        input = onlyNums;
-      }
-
-      setState(prevState => ({ ...prevState, [name]: input }));
+      setState(prevState => ({ ...prevState, [name]: onlyNums }));
     }
   };
 
