@@ -40,7 +40,12 @@ const NewTicket = ({ admin }) => {
   const handleInputChange = e => {
     const { name, value } = e.target;
 
-    setState(prevState => ({ ...prevState, [name]: value }));
+    if (name !== 'price') {
+      setState(prevState => ({ ...prevState, [name]: value }));
+    } else {
+      const onlyNums = value.replace(/[^0-9]/g, '');
+      setState(prevState => ({ ...prevState, [name]: onlyNums }));
+    }
   };
 
   return (
@@ -62,6 +67,7 @@ const NewTicket = ({ admin }) => {
                 onChange={handleInputChange}
                 name={name}
                 placeholder={placeholder}
+                value={name === 'price' ? price : title}
               />
             </div>
           );
