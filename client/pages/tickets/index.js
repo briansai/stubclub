@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+
 import List from '../../components/list';
+import Modal from '../../components/modal';
 import { paginate } from '../../utils/paginate';
 
 const options = [
@@ -16,16 +19,23 @@ const options = [
 
 const UserTickets = ({ tickets }) => {
   const [selectedPage, setSelectedPage] = useState(1);
+  const [selectedTicket, setTicket] = useState(null);
+  const [modal, setModal] = useState(false);
   const { data, pageCount } = paginate(tickets, selectedPage);
   const handlePageClick = event => {
     setSelectedPage(event.selected + 1);
     window.scrollTo(0, 0);
   };
   const handleOptionChange = (event, title, price) => {
-    console.log(event);
-    console.log(title);
-    console.log(price);
+    if (event.target.value === 'edit') {
+      setModal(true);
+      setTicket({ title, price });
+    }
   };
+
+  useEffect(() => {
+    modal ? disableBodyScroll('body') : enableBodyScroll('body');
+  });
 
   const ticketList = data.map(ticket => {
     const { id, title, price } = ticket;
@@ -78,6 +88,7 @@ const UserTickets = ({ tickets }) => {
           />
         )}
       </div>
+      {modal && <Modal content={selectedTicket} />}
     </div>
   );
 };
