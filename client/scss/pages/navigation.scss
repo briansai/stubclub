@@ -62,7 +62,7 @@
 
     &-content {
       display: none;
-      z-index: 1;
+      z-index: 2;
       min-width: 130px;
       position: absolute;
       text-align: center;
@@ -73,6 +73,7 @@
         border: 1px solid black;
         cursor: pointer;
         font-size: 0.75rem;
+        font-family: sans-serif;
 
         &:hover {
           background-color: $color-gray;

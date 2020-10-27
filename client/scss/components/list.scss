@@ -30,19 +30,24 @@
         border-left: 3px solid $color-gray;
         font-size: 1.5rem;
         color: #336699;
+        flex: 10 2 10%;
+        min-width: 320px;
       }
 
-      &-price {
-        margin-right: 3%;
+      &-item {
+        margin: auto 3%;
+        min-width: 65px;
+        flex: 1 10 3%;
 
         &-name {
-          float: right;
+          text-align: right;
           color: #b3b3b3;
           font-size: 0.8rem;
         }
 
         &-num {
           font-size: 1.2rem;
+          text-align: right;
         }
       }
 

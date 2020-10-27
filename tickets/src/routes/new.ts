@@ -16,8 +16,8 @@ router.post(
       .isEmpty()
       .withMessage('Title is required'),
     body('price')
-      .isFloat({ gt: 0 })
-      .withMessage('Price must be greater than 0')
+      .isFloat({ gt: 0, lt: 100000 })
+      .withMessage('Price must be greater than $0 and less than $100,000')
   ],
   validateRequest,
   async (req: Request, res: Response) => {

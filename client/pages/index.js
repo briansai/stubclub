@@ -18,9 +18,9 @@ const LandingPage = ({ tickets }) => {
       <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`} key={id}>
         <a className="ticket">
           <div className="ticket-title">{title}</div>
-          <div className="ticket-price">
-            <div className="ticket-price-name">price</div>
-            <div className="ticket-price-num">{`$${price}`}</div>
+          <div className="ticket-item">
+            <div className="ticket-item-name">price</div>
+            <div className="ticket-item-num">{`$${price}`}</div>
           </div>
         </a>
       </Link>
