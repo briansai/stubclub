@@ -3,7 +3,7 @@ import ReactPaginate from 'react-paginate';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import List from '../../components/list';
-import Modal from '../../components/modal';
+import Modal from '../../components/formModal';
 import { paginate } from '../../utils/paginate';
 
 const options = [
@@ -46,7 +46,11 @@ const UserTickets = ({ tickets }) => {
           <select onChange={e => handleOptionChange(e, title, price)}>
             {options.map(option => {
               const { value, label } = option;
-              return <option value={value}>{label}</option>;
+              return (
+                <option value={value} key={label}>
+                  {label}
+                </option>
+              );
             })}
           </select>
         </div>

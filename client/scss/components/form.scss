@@ -4,8 +4,14 @@
 @import '../utils/mixins/container.scss';
 
 .form {
-  @include container(380px, 120px, auto, 120px, auto);
+  @include container(380px, 0, 0, 0, 0);
   @include header;
+
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   .btn-container {
     width: 80%;
@@ -36,5 +42,9 @@
       width: 100%;
       line-height: 2rem;
     }
+  }
+
+  .container-modal {
+    box-shadow: 0;
   }
 }
