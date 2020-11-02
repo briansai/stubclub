@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './button';
 import { capitalize } from '../utils/capitalize';
 
-const FormModal = ({ content }) => {
+const FormModal = ({ content, setModal }) => {
   const items = Object.entries(content);
   const buttonClick = event => {
     event.preventDefault();
@@ -30,7 +30,10 @@ const FormModal = ({ content }) => {
     <div className="modal">
       <div className="modal-content">
         <div className="form">
-          <h1 className="header">Create a new ticket</h1>
+          <button className="close" onClick={() => setModal(false)}>
+            X
+          </button>
+          <h1 className="header">Edit Ticket</h1>
           {/* <div className="form-error">{errors}</div> */}
           <form>
             {items.map(item => {
@@ -52,7 +55,7 @@ const FormModal = ({ content }) => {
                 </div>
               );
             })}
-            <Button color="primary" text="Submit" onClick={buttonClick} />
+            <Button color="primary" text="Edit" onClick={buttonClick} />
           </form>
         </div>
       </div>

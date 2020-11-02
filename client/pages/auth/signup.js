@@ -8,7 +8,7 @@ const inputText = {
   password: ''
 };
 
-const SignIn = () => {
+const SignUp = () => {
   const items = [
     { name: 'email', placeholder: 'e.g. stubclub@gmail.com' },
     { name: 'password', placeholder: 'Must be between 4-20 characters' }
@@ -61,4 +61,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

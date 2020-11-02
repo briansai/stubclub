@@ -92,7 +92,7 @@ const UserTickets = ({ tickets }) => {
           />
         )}
       </div>
-      {modal && <Modal content={selectedTicket} />}
+      {modal && <Modal content={selectedTicket} setModal={setModal} />}
     </div>
   );
 };
