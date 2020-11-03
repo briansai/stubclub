@@ -1,58 +1,55 @@
 import { Fragment, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-
 import List from '../../components/list';
 import Modal from '../../components/formModal';
 import { paginate } from '../../utils/paginate';
 
-const options = [
-  {
-    value: 'noAction',
-    label: 'No Action'
-  },
-  {
-    value: 'edit',
-    label: 'Edit'
-  }
-];
-
 const UserTickets = ({ tickets }) => {
-  const [selectedPage, setSelectedPage] = useState(1);
+  const options = ['No Action', 'Edit'];
+  const [page, setPage] = useState(1);
   const [selectedTicket, setTicket] = useState(null);
   const [modal, setModal] = useState(false);
-  const { data, pageCount } = paginate(tickets, selectedPage);
+  const { data, pageCount } = paginate(tickets, page);
+
   const handlePageClick = event => {
-    setSelectedPage(event.selected + 1);
+    setPage(event.selected + 1);
     window.scrollTo(0, 0);
   };
-  const handleOptionChange = (event, title, price) => {
-    if (event.target.value === 'edit') {
-      setModal(true);
-      setTicket([
-        { value: title, name: 'title' },
-        { value: price, name: 'price' }
-      ]);
-    }
-  };
-
-  useEffect(() => {
-    modal ? disableBodyScroll('body') : enableBodyScroll('body');
-  });
 
   const ticketList = data.map(ticket => {
+    const [choice, setChoice] = useState('');
     const { id, title, price } = ticket;
+
+    const handleOptionChange = (event, title, price) => {
+      if (event.target.value === 'Edit') {
+        setModal(true);
+        setChoice(options[1]);
+        setTicket([
+          { value: title, name: 'title' },
+          { value: price, name: 'price' }
+        ]);
+      }
+    };
+
+    useEffect(() => {
+      modal ? disableBodyScroll('body') : enableBodyScroll('body');
+      !modal && setChoice(options[0]);
+    }, [modal]);
+
     return (
       <Fragment key={id}>
         <div className="ticket">
           <div className="ticket-title">{title}</div>
           <div className="ticket-item">
-            <select onChange={e => handleOptionChange(e, title, price)}>
-              {options.map(option => {
-                const { value, label } = option;
+            <select
+              value={choice}
+              onChange={e => handleOptionChange(e, title, price)}
+            >
+              {options.map((option, index) => {
                 return (
-                  <option value={value} key={label}>
-                    {label}
+                  <option value={option} key={index}>
+                    {option}
                   </option>
                 );
               })}

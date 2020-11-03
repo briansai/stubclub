@@ -18,7 +18,7 @@ const FormModal = ({ content, setModal, id }) => {
       title: title || content[0].value,
       price: price || content[1].value
     },
-    onSuccess: () => {
+    onSuccess: data => {
       setModal(false);
     }
   });
@@ -53,7 +53,6 @@ const FormModal = ({ content, setModal, id }) => {
             X
           </button>
           <h1 className="header">Edit Ticket</h1>
-          {/* <div className="form-error">{errors}</div> */}
           <form>
             {content.map((items, index) => {
               const { value, name } = items;
