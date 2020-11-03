@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
 import Button from './button';
 import { capitalize } from '../utils/capitalize';
+import useRequest from '../hooks/useRequest';
 
 const inputText = {
   title: '',
   price: ''
 };
 
-const FormModal = ({ content, setModal }) => {
+const FormModal = ({ content, setModal, id }) => {
   const [{ title, price }, setState] = useState({ inputText });
   const inputs = [title, price];
-  const buttonClick = event => {
+  const { doRequest, errors } = useRequest({
+    url: `/api/tickets/${id}`,
+    method: 'put',
+    body: {
+      title: title || content[0].value,
+      price: price || content[1].value
+    },
+    onSuccess: () => {
+      setModal(false);
+    }
+  });
+
+  const buttonClick = async event => {
     event.preventDefault();
 
-    event.target.name === 'Submit' ? doRequest() : seed();
+    await doRequest();
   };
 
   const handleInputChange = e => {

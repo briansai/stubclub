@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
@@ -43,25 +43,30 @@ const UserTickets = ({ tickets }) => {
   const ticketList = data.map(ticket => {
     const { id, title, price } = ticket;
     return (
-      <div className="ticket" key={id}>
-        <div className="ticket-title">{title}</div>
-        <div className="ticket-item">
-          <select onChange={e => handleOptionChange(e, title, price)}>
-            {options.map(option => {
-              const { value, label } = option;
-              return (
-                <option value={value} key={label}>
-                  {label}
-                </option>
-              );
-            })}
-          </select>
+      <Fragment key={id}>
+        <div className="ticket">
+          <div className="ticket-title">{title}</div>
+          <div className="ticket-item">
+            <select onChange={e => handleOptionChange(e, title, price)}>
+              {options.map(option => {
+                const { value, label } = option;
+                return (
+                  <option value={value} key={label}>
+                    {label}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="ticket-item">
+            <div className="ticket-item-name">price</div>
+            <div className="ticket-item-num">{`$${price}`}</div>
+          </div>
         </div>
-        <div className="ticket-item">
-          <div className="ticket-item-name">price</div>
-          <div className="ticket-item-num">{`$${price}`}</div>
-        </div>
-      </div>
+        {modal && (
+          <Modal content={selectedTicket} setModal={setModal} id={id} />
+        )}
+      </Fragment>
     );
   });
 
@@ -95,7 +100,6 @@ const UserTickets = ({ tickets }) => {
           />
         )}
       </div>
-      {modal && <Modal content={selectedTicket} setModal={setModal} />}
     </div>
   );
 };
