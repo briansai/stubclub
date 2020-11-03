@@ -29,7 +29,10 @@ const UserTickets = ({ tickets }) => {
   const handleOptionChange = (event, title, price) => {
     if (event.target.value === 'edit') {
       setModal(true);
-      setTicket({ title, price });
+      setTicket([
+        { value: title, name: 'title' },
+        { value: price, name: 'price' }
+      ]);
     }
   };
 

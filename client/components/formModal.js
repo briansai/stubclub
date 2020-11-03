@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import Button from './button';
 import { capitalize } from '../utils/capitalize';
 
+const inputText = {
+  title: '',
+  price: ''
+};
+
 const FormModal = ({ content, setModal }) => {
-  const items = Object.entries(content);
+  const [{ title, price }, setState] = useState({ inputText });
+  const inputs = [title, price];
   const buttonClick = event => {
     event.preventDefault();
 
@@ -12,7 +18,6 @@ const FormModal = ({ content, setModal }) => {
 
   const handleInputChange = e => {
     const { name, value } = e.target;
-
     if (name !== 'price') {
       setState(prevState => ({ ...prevState, [name]: value }));
     } else {
@@ -26,6 +31,7 @@ const FormModal = ({ content, setModal }) => {
       setState(prevState => ({ ...prevState, [name]: input }));
     }
   };
+
   return (
     <div className="modal">
       <div className="modal-content">
@@ -36,21 +42,20 @@ const FormModal = ({ content, setModal }) => {
           <h1 className="header">Edit Ticket</h1>
           {/* <div className="form-error">{errors}</div> */}
           <form>
-            {items.map(item => {
-              const label = item[0];
-              const value = item[1];
+            {content.map((items, index) => {
+              const { value, name } = items;
               return (
-                <div className="form-group" key={label}>
+                <div className="form-group" key={name}>
                   <div className="form-group-label">
                     <label className="form-group-label-text">
-                      {capitalize(label)}{' '}
+                      {capitalize(name)}{' '}
                     </label>
                   </div>
                   <input
                     className="form-group-input"
                     onChange={handleInputChange}
-                    name={label}
-                    value={value}
+                    name={name}
+                    value={inputs[index] || value}
                   />
                 </div>
               );
