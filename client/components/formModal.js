@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Router from 'next/router';
 import Button from './button';
 import { capitalize } from '../utils/capitalize';
 import useRequest from '../hooks/useRequest';
@@ -18,8 +19,9 @@ const FormModal = ({ content, setModal, id }) => {
       title: title || content[0].value,
       price: price || content[1].value
     },
-    onSuccess: data => {
+    onSuccess: () => {
       setModal(false);
+      return Router.push('/tickets');
     }
   });
 

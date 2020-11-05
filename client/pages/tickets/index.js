@@ -17,7 +17,7 @@ const UserTickets = ({ tickets }) => {
     window.scrollTo(0, 0);
   };
 
-  const ticketList = data.map(ticket => {
+  const ticketList = data.map((ticket, index) => {
     const [choice, setChoice] = useState('');
     const { id, title, price } = ticket;
 
