@@ -3,7 +3,7 @@
 
 @mixin list {
   .empty {
-    @include container(380px, 130px, auto, 130px, auto);
+    @include container(380px, 130px, auto, 130px, auto, $shadow: true);
 
     &-text {
       margin: 20%;
@@ -12,7 +12,7 @@
   }
 
   [class^='tickets'] {
-    @include container(75%, 7%, auto, 2%, auto);
+    @include container(75%, 7%, auto, 2%, auto, $shadow: true);
     min-width: 380px;
 
     .ticket {
@@ -71,7 +71,7 @@
   }
 
   .orders {
-    @include container(40%, 5%, auto, 5%, auto);
+    @include container(40%, 5%, auto, 5%, auto, $shadow: true);
     height: 80%;
     min-width: 280px;
 

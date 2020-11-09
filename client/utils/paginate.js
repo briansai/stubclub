@@ -7,6 +7,5 @@ export const paginate = (tickets, selectedPage) => {
     endIndex < tickets.length
       ? tickets.slice(startIndex, endIndex)
       : tickets.slice(startIndex, tickets.length);
-
   return { pageCount, data };
 };

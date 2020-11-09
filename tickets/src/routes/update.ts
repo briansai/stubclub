@@ -65,7 +65,7 @@ router.put(
       price: ticketPrice
     });
 
-    res.send(ticket);
+    res.status(204).send(ticket);
   }
 );
 

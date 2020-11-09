@@ -3,7 +3,7 @@
 @import '../utils/mixins/container.scss';
 
 .purchase {
-  @include container(260px, 160px, auto, 160px, auto);
+  @include container(260px, 160px, auto, 160px, auto, $shadow: true);
   text-align: center;
   padding: 2%;
 

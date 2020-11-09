@@ -25,4 +25,6 @@ ul {
 
 .main {
   font-family: 'Lato', sans-serif;
+
+  @include form($modal: false);
 }

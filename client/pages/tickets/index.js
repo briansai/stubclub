@@ -60,7 +60,7 @@ const UserTickets = ({ tickets }) => {
             <div className="ticket-item-num">{`$${price}`}</div>
           </div>
         </div>
-        {modal && (
+        {modal && selectedTicket[0].value === ticket.title && (
           <Modal content={selectedTicket} setModal={setModal} id={id} />
         )}
       </Fragment>

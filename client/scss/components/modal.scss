@@ -6,6 +6,7 @@
   left: 0;
   bottom: 0;
   right: 0;
+
   background-color: rgba(black, 0.8);
   z-index: 30;
   overflow: hidden;
@@ -13,5 +14,20 @@
   &-content {
     border-radius: 5px;
     overflow: hidden;
+
+    @include form($modal: true);
+    .close {
+      position: absolute;
+      right: 0;
+      text-decoration: none;
+      outline: 0;
+      border: 0;
+      background-color: white;
+      margin: 3%;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }
