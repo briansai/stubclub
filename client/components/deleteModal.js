@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Router from 'next/router';
 import Button from './button';
 import useRequest from '../hooks/useRequest';
@@ -27,10 +27,11 @@ const DeleteModal = ({ content, setModalStatus, id }) => {
           <button className="close" onClick={() => setModalStatus(false)}>
             X
           </button>
+          <div className="form-error">{errors}</div>
           <div className="delete">
             Are you sure you want to delete this ticket?
           </div>
-          <Button color="danger" text="delete" onClick={buttonClick} />
+          <Button color="danger" text="Delete" onClick={buttonClick} />
         </div>
       </div>
     </div>
