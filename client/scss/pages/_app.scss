@@ -7,6 +7,7 @@
 @import '../components/message.scss';
 @import '../components/pagination.scss';
 @import '../components/modal.scss';
+@import '../components/formContainer.scss';
 
 body {
   margin: 0;
@@ -25,6 +26,4 @@ ul {
 
 .main {
   font-family: 'Lato', sans-serif;
-
-  @include form($modal: false);
 }

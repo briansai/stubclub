@@ -1,0 +1,5 @@
+@import './form';
+
+.form-container {
+  @include form($modal: false);
+}

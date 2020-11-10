@@ -35,28 +35,30 @@ const SignUp = () => {
   };
 
   return (
-    <div className="form">
-      <h1 className="header">Sign Up</h1>
-      <div className="form-error">{errors}</div>
-      <form onSubmit={onSubmit}>
-        {items.map(item => {
-          const { name, placeholder } = item;
-          return (
-            <div className="form-group" key={name}>
-              <label className="form-group-label">{capitalize(name)} </label>
-              <input
-                className="form-group-input"
-                onChange={handleInputChange}
-                name={name}
-                placeholder={placeholder}
-              />
-            </div>
-          );
-        })}
-        <div className="btn-container">
-          <button className="btn btn-primary">Sign Up</button>
-        </div>
-      </form>
+    <div className="form-container">
+      <div className="form">
+        <h1 className="header">Sign Up</h1>
+        <div className="form-error">{errors}</div>
+        <form onSubmit={onSubmit}>
+          {items.map(item => {
+            const { name, placeholder } = item;
+            return (
+              <div className="form-group" key={name}>
+                <label className="form-group-label">{capitalize(name)} </label>
+                <input
+                  className="form-group-input"
+                  onChange={handleInputChange}
+                  name={name}
+                  placeholder={placeholder}
+                />
+              </div>
+            );
+          })}
+          <div className="btn-container">
+            <button className="btn btn-primary">Sign Up</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

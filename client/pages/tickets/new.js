@@ -55,34 +55,36 @@ const NewTicket = ({ admin }) => {
   };
 
   return (
-    <div className="form">
-      <h1 className="header">Create a new ticket</h1>
-      <div className="form-error">{errors}</div>
-      <form>
-        {items.map(item => {
-          const { name, placeholder } = item;
-          return (
-            <div className="form-group" key={name}>
-              <div className="form-group-label">
-                <label className="form-group-label-text">
-                  {capitalize(name)}{' '}
-                </label>
+    <div className="form-container">
+      <div className="form">
+        <h1 className="header">Create a new ticket</h1>
+        <div className="form-error">{errors}</div>
+        <form>
+          {items.map(item => {
+            const { name, placeholder } = item;
+            return (
+              <div className="form-group" key={name}>
+                <div className="form-group-label">
+                  <label className="form-group-label-text">
+                    {capitalize(name)}{' '}
+                  </label>
+                </div>
+                <input
+                  className="form-group-input"
+                  onChange={handleInputChange}
+                  name={name}
+                  placeholder={placeholder}
+                  value={name === 'price' ? price : title}
+                />
               </div>
-              <input
-                className="form-group-input"
-                onChange={handleInputChange}
-                name={name}
-                placeholder={placeholder}
-                value={name === 'price' ? price : title}
-              />
-            </div>
-          );
-        })}
-        <Button color="primary" text="Submit" onClick={buttonClick} />
-        {admin ? (
-          <Button color="secondary" text="Seed" onClick={buttonClick} />
-        ) : null}
-      </form>
+            );
+          })}
+          <Button color="primary" text="Submit" onClick={buttonClick} />
+          {admin ? (
+            <Button color="secondary" text="Seed" onClick={buttonClick} />
+          ) : null}
+        </form>
+      </div>
     </div>
   );
 };
