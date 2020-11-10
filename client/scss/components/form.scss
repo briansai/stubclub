@@ -26,6 +26,10 @@
       @include button(100%);
     }
 
+    .delete {
+      margin: 50px;
+    }
+
     &-error {
       @include error(75%);
     }
@@ -49,9 +53,5 @@
         line-height: 2rem;
       }
     }
-  }
-
-  .container-modal {
-    box-shadow: 0;
   }
 }

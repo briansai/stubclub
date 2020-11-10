@@ -8,6 +8,7 @@ import { userTicketRouter } from './routes/userTickets';
 import { displayTicketRouter } from './routes/display';
 import { indexTicketRouter } from './routes/index';
 import { updateTicketRouter } from './routes/update';
+import { deleteTicketRouter } from './routes/delete';
 import { seedTicketRouter } from './routes/seed';
 
 const app = express();
@@ -28,6 +29,7 @@ app.use(userTicketRouter);
 app.use(displayTicketRouter);
 app.use(indexTicketRouter);
 app.use(updateTicketRouter);
+app.use(deleteTicketRouter);
 app.use(seedTicketRouter);
 app.use(errorHandler);
 
