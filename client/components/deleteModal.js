@@ -3,7 +3,7 @@ import Router from 'next/router';
 import Button from './button';
 import useRequest from '../hooks/useRequest';
 
-const DeleteModal = ({ content, setModalStatus, id }) => {
+const DeleteModal = ({ setModalStatus, id }) => {
   const { doRequest, errors } = useRequest({
     url: `/api/tickets/${id}`,
     method: 'delete',
