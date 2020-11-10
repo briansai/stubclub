@@ -2,14 +2,15 @@ import { Fragment, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import List from '../../components/list';
-import Modal from '../../components/formModal';
+import FormModal from '../../components/formModal';
+import DeleteModal from '../../components/deleteModal';
 import { paginate } from '../../utils/paginate';
 
 const UserTickets = ({ tickets }) => {
-  const options = ['No Action', 'Edit'];
+  const options = ['No Action', 'Edit', 'Delete'];
   const [page, setPage] = useState(1);
   const [selectedTicket, setTicket] = useState(null);
-  const [modal, setModal] = useState(false);
+  const [modalStatus, setModalStatus] = useState(false);
   const { data, pageCount } = paginate(tickets, page);
 
   const handlePageClick = event => {
@@ -22,9 +23,11 @@ const UserTickets = ({ tickets }) => {
     const { id, title, price } = ticket;
 
     const handleOptionChange = (event, title, price) => {
-      if (event.target.value === 'Edit') {
-        setModal(true);
-        setChoice(options[1]);
+      const { value } = event.target;
+      setChoice(value);
+
+      if (value === 'Edit' || 'Delete') {
+        setModalStatus(true);
         setTicket([
           { value: title, name: 'title' },
           { value: price, name: 'price' }
@@ -32,10 +35,35 @@ const UserTickets = ({ tickets }) => {
       }
     };
 
+    const modal = () => {
+      if (choice === 'Edit') {
+        return (
+          <Fragment>
+            {modalStatus && selectedTicket[0].value === ticket.title && (
+              <FormModal
+                content={selectedTicket}
+                setModalStatus={setModalStatus}
+                id={id}
+              />
+            )}
+          </Fragment>
+        );
+      } else if (choice === 'Delete') {
+        return (
+          <Fragment>
+            {modalStatus && selectedTicket[0].value === ticket.title && (
+              <DeleteModal setModalStatus={setModalStatus} id={id} />
+            )}
+          </Fragment>
+        );
+      }
+      return null;
+    };
+
     useEffect(() => {
-      modal ? disableBodyScroll('body') : enableBodyScroll('body');
-      !modal && setChoice(options[0]);
-    }, [modal]);
+      modalStatus ? disableBodyScroll('body') : enableBodyScroll('body');
+      !modalStatus && setChoice(options[0]);
+    }, [modalStatus]);
 
     return (
       <Fragment key={id}>
@@ -60,9 +88,7 @@ const UserTickets = ({ tickets }) => {
             <div className="ticket-item-num">{`$${price}`}</div>
           </div>
         </div>
-        {modal && selectedTicket[0].value === ticket.title && (
-          <Modal content={selectedTicket} setModal={setModal} id={id} />
-        )}
+        {modal()}
       </Fragment>
     );
   });

@@ -9,7 +9,7 @@ const inputText = {
   price: ''
 };
 
-const FormModal = ({ content, setModal, id }) => {
+const FormModal = ({ content, setModalStatus, id }) => {
   const [{ title, price }, setState] = useState({ inputText });
   const inputs = [title, price];
   const { doRequest, errors } = useRequest({
@@ -20,7 +20,7 @@ const FormModal = ({ content, setModal, id }) => {
       price: price || content[1].value
     },
     onSuccess: () => {
-      setModal(false);
+      setModalStatus(false);
       return Router.push('/tickets');
     }
   });
@@ -51,7 +51,7 @@ const FormModal = ({ content, setModal, id }) => {
     <div className="modal">
       <div className="modal-content">
         <div className="form">
-          <button className="close" onClick={() => setModal(false)}>
+          <button className="close" onClick={() => setModalStatus(false)}>
             X
           </button>
           <h1 className="header">Edit Ticket</h1>
