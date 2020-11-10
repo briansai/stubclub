@@ -70,18 +70,22 @@ const UserTickets = ({ tickets }) => {
         <div className="ticket">
           <div className="ticket-title">{title}</div>
           <div className="ticket-item">
-            <select
-              value={choice}
-              onChange={e => handleOptionChange(e, title, price)}
-            >
-              {options.map((option, index) => {
-                return (
-                  <option value={option} key={index}>
-                    {option}
-                  </option>
-                );
-              })}
-            </select>
+            {ticket.orderId ? (
+              <div className="reserved">Reserved</div>
+            ) : (
+              <select
+                value={choice}
+                onChange={e => handleOptionChange(e, title, price)}
+              >
+                {options.map((option, index) => {
+                  return (
+                    <option value={option} key={index}>
+                      {option}
+                    </option>
+                  );
+                })}
+              </select>
+            )}
           </div>
           <div className="ticket-item">
             <div className="ticket-item-name">price</div>

@@ -36,8 +36,13 @@
 
       &-item {
         margin: auto 3%;
-        min-width: 65px;
+        text-align: center;
+        min-width: 80px;
         flex: 1 10 3%;
+
+        .reserved {
+          color: red;
+        }
 
         &-name {
           text-align: right;
