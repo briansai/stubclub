@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
+          # image: us.gcr.io/stubclub/client
           image: brianwsai/auth
           env:
             - name: MONGO_URI_AUTH
