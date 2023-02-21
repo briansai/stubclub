@@ -8,18 +8,20 @@ const useRequest = ({ url, method, body, onSuccess }) => {
       setErrors(null);
 
       const response = await axios[method](url, { ...body, ...props });
+      const data = response;
 
       if (onSuccess) {
-        onSuccess(response.data);
+        onSuccess(data);
       }
 
-      return response.data;
+      return data;
     } catch (error) {
+      const { data } = error.response;
       setErrors(
         <div className="error">
           <div className="error-text">Something went wrong:</div>
           <ul>
-            {error.response.data.errors.map(err => {
+            {data.errors.map((err) => {
               const { message } = err;
               return <li key={message}>{message}</li>;
             })}
